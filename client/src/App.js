@@ -37,6 +37,7 @@ class App extends Component {
     return (
       <Paper className = {classes.root}>
         <Table className = {classes.table}>
+          {/*테이블 헤더 부분*/}
           <TableHead>
             <TableRow>
               <TableCell>번호</TableCell>
@@ -47,6 +48,8 @@ class App extends Component {
               <TableCell>직업</TableCell>
             </TableRow>
           </TableHead>
+
+          {/*테이블 body 부분(info_me.js에서의 내용을 불러옴)*/}
           <TableBody>
             { me.map(i => {
                 return (
