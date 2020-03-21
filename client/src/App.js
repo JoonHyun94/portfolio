@@ -18,20 +18,25 @@ const styles = theme => ({
   table: {
     minWidth: 1000
   }
-})
-
-const me = [
-  {
-    'id' : 1,
-    'image' : 'https://placeimg.com/64/64/any',
-    'name' : '신준현',
-    'birthday' : '940919',
-    'gender' : '남자',
-    'job' : '프로그래머'
-  },
-]
+});
 
 class App extends Component {
+  state = {
+    data: ""
+  }
+
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({data: res}))
+      .catch(err => console.log(err));
+  }
+  
+  callApi = async() => {
+    const response = await fetch('/api/info_me');
+    const body = await response.json();
+    return body;
+  }
+
   render() {
     const {classes} = this.props;
     return (
@@ -51,20 +56,17 @@ class App extends Component {
 
           {/*테이블 body 부분(info_me.js에서의 내용을 불러옴)*/}
           <TableBody>
-            { me.map(i => {
-                return (
-                  <Info_me
-                    key = {i.id}
-                    id = {i.id}
-                    image = {i.image}
-                    name = {i.name}
-                    birthday = {i.birthday}
-                    gender = {i.gender}
-                    job = {i.job}
-                  />
-                )
-              })
-            }
+            {this.state.data ? this.state.data.map(i => { return (<Info_me
+              key = {i.id}
+              id = {i.id}
+              image = {i.image}
+              name = {i.name}
+              birthday = {i.birthday}
+              gender = {i.gender}
+              job = {i.job}
+            />
+            );
+          }) : "" }
           </TableBody>
         </Table>
       </Paper>
