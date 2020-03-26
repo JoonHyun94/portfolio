@@ -5,11 +5,6 @@
   font-weight: normal;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-
 .gray-background {
   background: darkgray;
 }
@@ -43,7 +38,6 @@
   display: flex;
 }
 span {
-  cursor: pointer;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-repeat: no-repeat;
@@ -79,66 +73,150 @@ span {
 /* about_me */
 .me {
   display: flex;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
 }
 .info_me {
-  flex-direction: column;
-  margin-left: 3vw;
-  margin-right: 6vw;
-  margin-top: 10vw;
-  width: 25%;
+  margin-right: 8vw;
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+  width: 40%;
   text-align: center;
 }
+.index {
+  float: left;
+  /* 개행 적용 */
+  white-space: pre-line;
+  margin-top: 1.5vw;
+  margin-left: 1.5vw;
+  font-family:JejuGothic;
+  font-size: 1.2vw;
+  font-weight: 900;
+}
 .id_photo {
-  height: 60%;
-  width: 58%;
+  height: 57%;
+  width: 42%;
   border: none;
   box-shadow: 0px 0px 20px #000;
 }
 .name {
   text-align:center;
   /* 개행 적용 */
-  white-space: pre-line;
+  white-space: pre;
   font-family:JejuGothic;
-  font-size: 1.5rem;
+  font-size: 1.5vw;
 }
 .info {
   text-align:center;
   /* 개행 적용 */
-  white-space: pre-line;
+  white-space: pre;
   font-family:JejuGothic;
-  font-size: 0.8rem;
+  font-size: 1vw;
 }
-.about {
-  text-align:left;
+.about_me {
+  position: relative;
+  width: 100%;
+}
+.about_title {
+  position: absolute;
+  top: 17%;
+  font-family: JejuGothic;
+  font-size: 2vw;
+  text-decoration: none;
+  border-bottom: 0.15vw solid #FACC2E;
+  padding-bottom:0.5vw;
+}
+.about_content {
+  position: absolute;
+  text-align: justify;
+  width: 80%;
+  line-height: 1.7vw;
+  font-family: JejuGothic;
+  font-size: 1.3vw;
+  top: 32%;
   /* 개행 적용 */
   white-space: pre-line;
-  margin-top: 5vw;
-  margin-bottom: 5vw;
-  font-family:JejuGothic;
-  font-size: 10rem;
-  font-weight: 900;
 }
 /* about_me */
 
+/* skill */
+.skill {
+  position: relative;
+  background-color: #F7F8E0;
+  height: 50vw;
+}
+.skill_title {
+  position: absolute;
+  font-family: JejuGothic;
+  font-size: 3vw;
+  left: 50%; 
+  transform:translateX(-50%);
+  top: 5%;
+  text-decoration: none;
+  border-bottom: 0.15vw solid #FACC2E;
+  padding-bottom:0.5vw;
+}
 
 
-@media ( max-width: 1024px ) {
+
+
+@media ( max-width: 575px ) {
   .main {
     height: 100vmax;
     width: 100vmax;
   }
-
   .main::after {
     height: 100vmax;
     width: 100vmax;
   }
   .main_title_hello {
     top: 50%;
+    font-size: 3vw;
   }
   .main_title_about {
     top: 50%;
+    font-size: 3vw;
+  }
+
+
+  body{
+    height: 100%;
+  }
+  .me {
+    /* display: flex; */
+    /* position: relative; */
+  }
+  .info_me {
+    margin:0 auto; 
+    display: inline-block;
+  }
+  .about_me {
+    display: inline-block;
+    position: absolute;
+    top: 100%;
+    left: 50%; 
+    transform:translateX(-50%);
+  }
+  .id_photo {
+    text-align: center;
+    margin-top: 10%;
+    width: 100%;
+    height: 70%;
+  }
+  .name {
+    font-size: 100%;
+  }
+  .info {
+    margin:0 auto; 
+    width: fit-content;
+    font-size: 60%;
+  }
+  .about_title {
+    position: absolute;
+    left: 50%; 
+    transform:translateX(-50%);
+  }
+  .about_content {
+    position: absolute;
+    left: 50%; 
+    transform:translateX(-50%);
   }
 }

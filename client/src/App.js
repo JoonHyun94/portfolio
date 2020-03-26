@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import Info_me from "./components/info_me";
-import Main from "./components/main";
+import Skill from "./components/skill";
 import './App.css';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import {withStyles} from '@material-ui/core/styles';
-{/* <meta name="viewport" content="width=device-width, initial-scale=1"/> */}
 
 const styles = theme => ({
   root: {
@@ -69,7 +68,7 @@ function interval_title() {
 
 class App extends Component {
   state = {
-    main_data: "",
+    skill_data: "",
     about_data: "",
     completed: 0 // 로딩 애니메이션의 초기값: 0, 0 ~ 100까지 게이지가 채워짐
   }
@@ -77,25 +76,27 @@ class App extends Component {
   componentDidMount() {
     this.timer = setInterval(this.progress, 20); // 0.02초마다 progress함수가 실행됨
 
-    this.callApi_main()
-      .then(res => this.setState({main_data: res}))
-      .catch(err => console.log(err));
-
     this.callApi_about()
       .then(res => this.setState({about_data: res}))
       .catch(err => console.log(err));
+      
+    this.callApi_skill()
+      .then(res => this.setState({skill_data: res}))
+      .catch(err => console.log(err));
   }
+
   
-  callApi_main = async() => {
-    const main_response = await fetch('/api/main');
-    const main_body = await main_response.json();
-    return main_body;
-  }
 
   callApi_about = async() => {
     const about_response = await fetch('/api/info_me');
     const about_body = await about_response.json();
     return about_body;
+  }
+
+  callApi_skill = async() => {
+    const skill_response = await fetch('/api/skill');
+    const skill_body = await skill_response.json();
+    return skill_body;
   }
 
   // 애니메이션 함수
@@ -118,19 +119,30 @@ class App extends Component {
             <span class = "main_title_about"><h1>신준현의 포트폴리오입니다</h1></span>
           </div>
         </div>
-        {/*테이블 body 부분(info_me.js에서의 내용을 불러옴)*/}
-        {/* {this.state.about_data ? this.state.about_data.map(i => { return (<Info_me
+        {/* about_me */}
+        {this.state.about_data ? this.state.about_data.map(i => { return (<Info_me
               key = {i.id}
               image = {i.image}
               name = {i.name}
               index = {i.index}
               about = {i.about}
+              aboutContent = {i.aboutContent}
             />
             );
           }) :
           // 데이터를 불러 오지 못할 경우(로딩페이지)
           <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
-        } */}
+        }
+        {/* skills */}
+        {this.state.skill_data ? this.state.skill_data.map(i => { return (<Skill
+              index = {i.index}
+              skillTitle = {i.skillTitle}
+            />
+            );
+          }) :
+          // 데이터를 불러 오지 못할 경우(로딩페이지)
+          <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
+        }
       </div>
     );
   }
