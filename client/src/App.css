@@ -26,7 +26,7 @@
   background-image: url(./images/main.png);
   width: 100%;
   max-width: 100%;
-  height: 100vw;
+  height: 100vh;
   content: "";
   transform: scale(1.02);
   filter: blur(0.8px);
@@ -74,16 +74,16 @@ span {
 .me {
   display: flex;
 }
+
 .info_me {
-  margin-right: 8vw;
+  margin-right: 5vw;
   margin-top: 5vw;
   margin-bottom: 5vw;
-  width: 40%;
+  width: fit-content;
   text-align: center;
 }
 .index {
   float: left;
-  /* 개행 적용 */
   white-space: pre-line;
   margin-top: 1.5vw;
   margin-left: 1.5vw;
@@ -91,35 +91,40 @@ span {
   font-size: 1.2vw;
   font-weight: 900;
 }
+.id_img {
+  margin-bottom: 3vw;
+}
 .id_photo {
-  height: 57%;
-  width: 42%;
+  width: 55%;
+  height: auto;
   border: none;
   box-shadow: 0px 0px 20px #000;
 }
 .name {
   text-align:center;
-  /* 개행 적용 */
+  margin-bottom: 5vw;
   white-space: pre;
   font-family:JejuGothic;
   font-size: 1.5vw;
 }
 .info {
   text-align:center;
-  /* 개행 적용 */
   white-space: pre;
   font-family:JejuGothic;
   font-size: 1vw;
 }
+
 .about_me {
   position: relative;
+  margin-right: 5vw;
   width: 100%;
 }
 .about_title {
   position: absolute;
+  width: auto;
   top: 17%;
   font-family: JejuGothic;
-  font-size: 2vw;
+  font-size: 3vw;
   text-decoration: none;
   border-bottom: 0.15vw solid #FACC2E;
   padding-bottom:0.5vw;
@@ -127,12 +132,11 @@ span {
 .about_content {
   position: absolute;
   text-align: justify;
-  width: 80%;
-  line-height: 1.7vw;
+  width: auto;
+  line-height: 2.2vw;
   font-family: JejuGothic;
-  font-size: 1.3vw;
+  font-size: 1.5vw;
   top: 32%;
-  /* 개행 적용 */
   white-space: pre-line;
 }
 /* about_me */
@@ -181,42 +185,91 @@ span {
     height: 100%;
   }
   .me {
-    /* display: flex; */
-    /* position: relative; */
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
   }
+
   .info_me {
-    margin:0 auto; 
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    margin-left: 8vw;
+    text-align: justify;
   }
-  .about_me {
-    display: inline-block;
-    position: absolute;
-    top: 100%;
-    left: 50%; 
-    transform:translateX(-50%);
+  .info_me_child {
+    width: fit-content;
+  }
+  .id_img {
+    margin-right: 5vw;
+    margin-left: 5vw;
   }
   .id_photo {
-    text-align: center;
-    margin-top: 10%;
-    width: 100%;
-    height: 70%;
+    width: 20vw;
+    height: auto;
   }
   .name {
-    font-size: 100%;
+    white-space: pre-line;
+    text-align: justify;
+    margin-top: 3vw;
+    font-size: 4vw;
   }
   .info {
-    margin:0 auto; 
+    white-space: pre-line;
+    text-align: justify;
     width: fit-content;
-    font-size: 60%;
+    margin-top: 10vw;
+    font-size: 2.2vw;
+  }
+
+  .about_me {
+    position: unset;
+    margin: 0 auto;
+    margin-top: 5vw;
+    width: 80%;
+    left: 50%;
+    height: auto;
+    margin-bottom: 5vw;
   }
   .about_title {
-    position: absolute;
-    left: 50%; 
-    transform:translateX(-50%);
+    position: unset;
+    font-size: 4vw;
+    width: fit-content;
+    margin: 0%;
   }
   .about_content {
-    position: absolute;
-    left: 50%; 
-    transform:translateX(-50%);
+    position: unset;
+    font-size: 3vw;
+    line-height: 4vw;
+    width: 100%;
+    left: 50%;
+    margin-top: 3vw;
   }
+
+  @media ( max-width: 352px ) {  
+    .info_me {
+      margin-left: 0;
+    }
+    .info_me_child {
+      margin: 0 auto;
+    }
+    .id_img {
+      width: 100%;
+      text-align: center;
+    }
+    .id_photo {
+      width: 40vw;
+      height: auto;
+    }
+    .name {
+      text-align: center;
+    }
+    .info {
+      text-align: center;
+      margin-bottom: 5vw;
+    }
+  }
+
 }
