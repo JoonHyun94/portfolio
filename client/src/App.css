@@ -43,6 +43,13 @@ span {
   background-repeat: no-repeat;
   transition: background-size 1.5s cubic-bezier(0.67, 0.01, 0.15, 0.98);
 }
+.main_h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
 .main_title_hello {
   font-family: Noto Sans KR,sans-serif;
   font-size: 2vw;
@@ -51,8 +58,8 @@ span {
   background-size: 0% 0%;
   /* 글자 이미지 정가운데 배치 */
   position: absolute;
-  top: 40%;
-  left: 50%; 
+  top: 50%;
+  left: 50%;
   transform:translateX(-50%);
 }
 .main_title_about {
@@ -64,7 +71,7 @@ span {
   background-size: 0% 0%;
   /* 글자 이미지 정가운데 배치 */
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%; 
   transform:translateX(-50%);
 }
@@ -84,6 +91,7 @@ span {
 }
 .index {
   float: left;
+  height: fit-content;
   white-space: pre-line;
   margin-top: 1.5vw;
   margin-left: 1.5vw;
@@ -135,32 +143,167 @@ span {
   width: auto;
   line-height: 2.2vw;
   font-family: JejuGothic;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   top: 32%;
   white-space: pre-line;
 }
 /* about_me */
 
-/* skill */
-.skill {
-  position: relative;
-  background-color: #F7F8E0;
-  height: 50vw;
+/* project */
+/* project_header */
+.project {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #FBFBEF;
+  height: auto;
 }
-.skill_title {
-  position: absolute;
-  font-family: JejuGothic;
-  font-size: 3vw;
-  left: 50%; 
-  transform:translateX(-50%);
-  top: 5%;
+.project_h1 {
+  margin: 0 auto;
+}
+.project_title {
+  margin: 0 auto;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+  height: fit-content;
   text-decoration: none;
   border-bottom: 0.15vw solid #FACC2E;
   padding-bottom:0.5vw;
+  font-family: JejuGothic;
+  font-size: 1.5vw;
 }
+/* project_header */
 
+/* project_body */
+.project_body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+}
+.kh_project {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 85%;
+}
+.kh_project_img {
+  width: fit-content;
+  height: auto;
+  margin-right: 1vw;
+}
+.kh_img {
+  width: 32vw;
+  height: auto;
+}
+.project_content_title {
+  margin-top: 0;
+  width: 100%;
+  font-family: JejuGothic;
+  font-size: 2vw;
+}
+.kh_project_content {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  width: 60%;
+  height: auto;
+}
+.project_introduction {
+  margin-bottom: 4vw;
+  white-space: pre-line;
+  font-family: JejuGothic;
+  font-size: 1vw;
+  line-height: 2vw;
+}
+.project_myrule {
+  white-space: pre-line;
+  font-family: JejuGothic;
+  font-size: 1vw;
+  line-height: 2vw;
+}
+.skill {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 85%;
+  height: fit-content;
+}
+.skills {
+  cursor: pointer;
+  background-color: rgb(31, 100, 165);
+  margin: 2vw;
+  margin-left: 0;
+  width: fit-content;
+  height: fit-content;
+  font-family: JejuGothic;
+  font-size: 1.5vw;
+}
+/* project_body */
+/* project */
 
-
+/* contact */
+/* contact_header */
+.contact_me {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #F2F2F2;
+  height: auto;
+}
+.contact_h1 {
+  margin: 0 auto;
+}
+.contact_title {
+  margin: 0 auto;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+  height: fit-content;
+  text-decoration: none;
+  border-bottom: 0.15vw solid #FACC2E;
+  padding-bottom:0.5vw;
+  font-family: JejuGothic;
+  font-size: 1.5vw;
+}
+/* contact_header */
+/* contact_body */
+.contact_body {
+  width: 100%;
+  height: auto;
+}
+.contact_content {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-bottom: 3vw;
+  width: 40%;
+}
+.contact_detail {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+}
+.contact_name {
+  font-family: JejuGothic;
+  font-size: 2.5vw;
+  margin-bottom: 4vw;
+}
+.contact_email, .contact_phone {
+  font-family: JejuGothic;
+  font-size: 1.5vw;
+  line-height: 3vw;
+}
+.contact_img {
+  position: absolute;
+  margin: 0 auto;
+  right: 0;
+  top: 5%;
+}
+.contact_detail_img {
+  width: 10vw;
+  height: auto;
+}
+/* contact_body */
+/* contact */
 
 @media ( max-width: 575px ) {
   .main {

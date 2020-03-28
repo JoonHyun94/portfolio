@@ -31,12 +31,36 @@ app.get('/api/info_me', (req, res) => {
     );
 });
 
-app.get('/api/skill', (req, res) => {
+app.get('/api/project', (req, res) => {
     res.send(
         [
             {
                 'index' : 'SHIN \n ; \n PORT \n FOLIO',
-                'skillTitle' : 'skills'
+                'projectTitle' : 'Project',
+                'image' : '/images/kh_project_img.jpg',
+                'khProjectIntroduction' : `주제 : 취업 정보 통합 포털사이트
+                                        인원 : 5명(팀장 포함)
+                                        배경 : 기업에 관한 정보와 취업 정보를 무료로 조회하는 사이트가 존재하지 않음 → "기업조회 + 정보 제공하는 웹사이트"
+                                        참고 모델 사이트 : 크레딧잡 + 잡코리아 + 자소설 닷컴
+                                        진행기간 : 2019.06.19 ~ 2019.08.12`,
+                'khProjectMyrule' : `메인 홈페이지 기업검색 기능
+                                    검색한 기업의 간략한 정보 게시판
+                                    기업리뷰게시판 (게시글 CRUD, 게시글 추천, 댓글 작성 및 추천)`
+            }
+        ]
+    );
+});
+
+app.get('/api/contact_me', (req, res) => {
+    res.send(
+        [
+            {
+                'index' : 'SHIN \n ; \n PORT \n FOLIO',
+                'contact_title' : 'Contact Me',
+                'contact_name' : '신준현(ShinJoonHyun)',
+                'contact_email' : 'email : slio_7@naver.com',
+                'contact_phone' : 'phone : 010-9582-9596',
+                'contact_img' : '/images/JoonHyun.jpg'
             }
         ]
     );

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Info_me from "./components/info_me";
-import Skill from "./components/skill";
+import Project from "./components/project";
+import Contact_me from "./components/contact_me";
 import './App.css';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import {withStyles} from '@material-ui/core/styles';
@@ -45,15 +46,15 @@ function startInterval() {
         interval_title(); // 'main_title_hello' 출력 및 'main_title_about' 사라짐
         mainTitle = document.getElementsByClassName('main_title_about'); // 'mainTitle' 변경
         handle = false; // handle 변경
-      }, 2000);
+      }, 3000);
     } else { // handle이 'false'일 경우 2초 후 interval_title()함수 실행
       handle=setTimeout(function() {
         interval_title(); // 'main_title_about' 출력 및 'main_title_hello' 사라짐
         mainTitle = document.getElementsByClassName('main_title_hello'); // 'mainTitle' 변경
         handle = true; // handle 변경
-      }, 2000);
+      }, 3000);
     }
-  }, 2000)
+  }, 3000)
 }
 function interval_title() {
   if(toggle) {
@@ -70,6 +71,7 @@ class App extends Component {
   state = {
     skill_data: "",
     about_data: "",
+    contact_data: "",
     completed: 0 // 로딩 애니메이션의 초기값: 0, 0 ~ 100까지 게이지가 채워짐
   }
 
@@ -80,8 +82,12 @@ class App extends Component {
       .then(res => this.setState({about_data: res}))
       .catch(err => console.log(err));
       
-    this.callApi_skill()
-      .then(res => this.setState({skill_data: res}))
+    this.callApi_project()
+      .then(res => this.setState({project_data: res}))
+      .catch(err => console.log(err));
+
+    this.callApi_contact()
+      .then(res => this.setState({contact_data: res}))
       .catch(err => console.log(err));
   }
 
@@ -93,10 +99,16 @@ class App extends Component {
     return about_body;
   }
 
-  callApi_skill = async() => {
-    const skill_response = await fetch('/api/skill');
-    const skill_body = await skill_response.json();
-    return skill_body;
+  callApi_project = async() => {
+    const project_response = await fetch('/api/project');
+    const project_body = await project_response.json();
+    return project_body;
+  }
+
+  callApi_contact = async() => {
+    const contact_response = await fetch('/api/contact_me');
+    const contact_body = await contact_response.json();
+    return contact_body;
   }
 
   // 애니메이션 함수
@@ -115,8 +127,8 @@ class App extends Component {
         {/* main */}
         <div class = "main">
           <div class = "title">
-            <span class = "main_title_hello"><h1>안녕하세요</h1></span>
-            <span class = "main_title_about"><h1>신준현의 포트폴리오입니다</h1></span>
+            <span class = "main_title_hello"><h1 class = "main_h1">안녕하세요</h1></span>
+            <span class = "main_title_about"><h1 class = "main_h1">신준현의 포트폴리오입니다</h1></span>
           </div>
         </div>
         {/* about_me */}
@@ -133,10 +145,29 @@ class App extends Component {
           // 데이터를 불러 오지 못할 경우(로딩페이지)
           <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
         }
+
         {/* skills */}
-        {this.state.skill_data ? this.state.skill_data.map(i => { return (<Skill
+        {this.state.project_data ? this.state.project_data.map(i => { return (<Project
               index = {i.index}
-              skillTitle = {i.skillTitle}
+              projectTitle = {i.projectTitle}
+              image = {i.image}
+              khProjectIntroduction = {i.khProjectIntroduction}
+              khProjectMyrule = {i.khProjectMyrule}
+            />
+            );
+          }) :
+          // 데이터를 불러 오지 못할 경우(로딩페이지)
+          <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
+        }
+
+        {/* contact_me */}
+        {this.state.contact_data ? this.state.contact_data.map(i => { return (<Contact_me
+              index = {i.index}
+              contact_title = {i.contact_title}
+              contact_name = {i.contact_name}
+              contact_email = {i.contact_email}
+              contact_phone = {i.contact_phone}
+              contact_img = {i.contact_img}
             />
             );
           }) :
