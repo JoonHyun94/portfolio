@@ -29,7 +29,7 @@
   height: 100vh;
   content: "";
   transform: scale(1.02);
-  filter: blur(0.8px);
+  filter: blur(3px);
   z-index: -1; /* after의 index 값 */
   /* 배경 상단고정 및 화면 전체 표시 */
   background-attachment: fixed;
@@ -39,7 +39,7 @@
 }
 span {
   -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+  background-clip: text;
   background-repeat: no-repeat;
   transition: background-size 1.5s cubic-bezier(0.67, 0.01, 0.15, 0.98);
 }
@@ -83,11 +83,11 @@ span {
 }
 
 .info_me {
+  width: fit-content;
+  text-align: center;
   margin-right: 5vw;
   margin-top: 5vw;
   margin-bottom: 5vw;
-  width: fit-content;
-  text-align: center;
 }
 .index {
   float: left;
@@ -100,13 +100,19 @@ span {
   font-weight: 900;
 }
 .id_img {
+  margin: 0 auto;
   margin-bottom: 3vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
 }
 .id_photo {
-  width: 55%;
+  width: 100%;
   height: auto;
-  border: none;
-  box-shadow: 0px 0px 20px #000;
 }
 .name {
   text-align:center;
@@ -152,6 +158,7 @@ span {
 /* project */
 /* project_header */
 .project {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   background-color: #FBFBEF;
@@ -161,10 +168,12 @@ span {
   margin: 0 auto;
 }
 .project_title {
-  margin: 0 auto;
+  position: absolute;
   margin-top: 3vw;
-  margin-bottom: 3vw;
+  width: fit-content;
   height: fit-content;
+  left: 50%;
+  transform:translateX(-50%);
   text-decoration: none;
   border-bottom: 0.15vw solid #FACC2E;
   padding-bottom:0.5vw;
@@ -177,31 +186,47 @@ span {
 .project_body {
   display: flex;
   flex-direction: column;
+  margin-top: 3vw;
   width: 100%;
   height: auto;
 }
+.project_detail_title {
+  margin-left: 2vw;
+  margin-bottom: 1vw;
+  width: 85%;
+  font-family: JejuGothic;
+  font-size: 2vw;
+}
 .kh_project {
+  border-radius: 0.5vw;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 
+              0 4px 6px -2px rgba(0,0,0,.05);
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
+  margin-bottom: 2vw;
   width: 85%;
 }
 .kh_project_img {
-  width: fit-content;
+  display: flex;
+  margin-left: 2vw;
+  align-items: center;
+  width: 35%;
   height: auto;
   margin-right: 1vw;
 }
 .kh_img {
-  width: 32vw;
+  width: 100%;
   height: auto;
 }
 .project_content_title {
-  margin-top: 0;
-  width: 100%;
+  margin-bottom: 1vw;
+  width: 85%;
   font-family: JejuGothic;
   font-size: 2vw;
 }
 .kh_project_content {
+  margin-left: 1vw;
   display: flex;
   flex-direction: column;
   text-align: justify;
@@ -225,18 +250,29 @@ span {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
+  margin-top: 2vw;
+  margin-left: 2vw;
+  margin-bottom: 1vw;
   width: 85%;
   height: fit-content;
 }
 .skills {
   cursor: pointer;
   background-color: rgb(31, 100, 165);
-  margin: 2vw;
-  margin-left: 0;
+  margin-right: 2vw;
   width: fit-content;
   height: fit-content;
   font-family: JejuGothic;
   font-size: 1.5vw;
+}
+.git {
+  width: fit-content;
+  height: auto;
+  margin: 2vw;
+}
+.github {
+  width: 4vw;
+  height: auto;
 }
 /* project_body */
 /* project */
@@ -244,6 +280,7 @@ span {
 /* contact */
 /* contact_header */
 .contact_me {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   background-color: #F2F2F2;
@@ -253,10 +290,12 @@ span {
   margin: 0 auto;
 }
 .contact_title {
+  position: absolute;
   margin: 0 auto;
   margin-top: 3vw;
-  margin-bottom: 3vw;
   height: fit-content;
+  left: 50%;
+  transform:translateX(-50%);
   text-decoration: none;
   border-bottom: 0.15vw solid #FACC2E;
   padding-bottom:0.5vw;
@@ -268,6 +307,7 @@ span {
 .contact_body {
   width: 100%;
   height: auto;
+  margin-top: 3vw;
 }
 .contact_content {
   display: flex;
@@ -276,10 +316,14 @@ span {
   margin: 0 auto;
   margin-bottom: 3vw;
   width: 40%;
+  border-radius: 1vw;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 
+  0 4px 6px -2px rgba(0,0,0,.05);
 }
 .contact_detail {
   display: flex;
   flex-direction: column;
+  margin: 2vw;
   text-align: justify;
 }
 .contact_name {
@@ -306,6 +350,11 @@ span {
 /* contact */
 
 @media ( max-width: 575px ) {
+  body{
+    height: 100%;
+  }
+
+  /* max-width-main */
   .main {
     height: 100vmax;
     width: 100vmax;
@@ -322,11 +371,9 @@ span {
     top: 50%;
     font-size: 3vw;
   }
+  /* max-width-main */
 
-
-  body{
-    height: 100%;
-  }
+  /* max-width-about_me */
   .me {
     flex-wrap: wrap;
     width: 100%;
@@ -337,26 +384,28 @@ span {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
+    margin-top: 2vw;
     width: 100%;
     height: auto;
-    margin-left: 8vw;
     text-align: justify;
   }
   .info_me_child {
     width: fit-content;
   }
   .id_img {
-    margin-right: 5vw;
+    margin-right: 2vw;
     margin-left: 5vw;
+    width: 25%;
+    height: auto;
   }
   .id_photo {
-    width: 20vw;
+    width: 100%;
     height: auto;
   }
   .name {
     white-space: pre-line;
     text-align: justify;
-    margin-top: 3vw;
+    margin-top: 8vw;
     font-size: 4vw;
   }
   .info {
@@ -364,7 +413,7 @@ span {
     text-align: justify;
     width: fit-content;
     margin-top: 10vw;
-    font-size: 2.2vw;
+    font-size: 2.5vw;
   }
 
   .about_me {
@@ -390,20 +439,117 @@ span {
     left: 50%;
     margin-top: 3vw;
   }
+  /* max-width-about_me */
+
+  /* max-width-project */
+  .project_title {
+    font-size: 3vw;
+  }
+  .project_body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vw;
+  }
+  .kh_project {
+    display: flex;
+    flex-direction: column;
+  }
+  .project_detail_title {
+    margin-bottom: 3vw;
+    text-align: center;
+    width: 100%;
+    font-size: 3vw;
+  }
+  .kh_project_img {
+    margin: 0 auto;
+    margin-bottom: 2vw;
+    width: 80%;
+    height: auto;
+  }
+  .kh_img {
+    width: 100%;
+    height: auto;
+  }
+  .project_content_title {
+    margin-bottom: 1vw;
+    width: 100%;
+    font-family: JejuGothic;
+    font-size: 4vw;
+  }
+  .kh_project_content {
+    margin: 0 auto;
+    width: 80%;
+  }
+  .project_introduction {
+    margin-bottom: 3vw;
+    font-size: 3vw;
+    line-height: 4vw;
+  }
+  .project_myrule {
+    font-size: 3vw;
+    line-height: 4vw;
+  }
+  .skill {
+    margin: 0 auto;
+    margin-top: 2vw;
+    width: 80%;
+  }
+  .skills {
+    font-size: 2.5vw;
+    line-height: 3vw;
+  }
+  .git {
+    width: fit-content;
+    height: auto;
+    margin: 2vw;
+    margin-left: 90%;
+  }
+  .github {
+    width: 6vw;
+    height: auto;
+  }
+  /* max-width-project */
+
+  /* max-width-contact */
+  .contact_body {
+    margin-top: 5vw;
+  }
+  .contact_title {
+    font-size: 3vw;
+  }
+  .contact_content {
+    margin-bottom: 5vw;
+    width: 70%;
+    height: auto;
+  }
+  .contact_name {
+    font-family: JejuGothic;
+    font-size: 4vw;
+    margin-bottom: 6vw;
+  }
+  .contact_email, .contact_phone {
+    font-family: JejuGothic;
+    font-size: 3vw;
+    line-height: 4vw;
+  }
+  /* max-width-contact */
 
   @media ( max-width: 352px ) {  
     .info_me {
+      display: flex;
+      flex-direction: column;
       margin-left: 0;
     }
     .info_me_child {
       margin: 0 auto;
     }
     .id_img {
-      width: 100%;
+      margin: 0 auto;
+      width: 30%;
       text-align: center;
     }
     .id_photo {
-      width: 40vw;
+      width: 100%;
       height: auto;
     }
     .name {

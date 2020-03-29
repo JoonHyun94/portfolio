@@ -14,7 +14,6 @@ class Contact_me extends React.Component {
                             <div class = "contact_email">{this.props.contact_email}</div>
                             <div class = "contact_phone">{this.props.contact_phone}</div>
                         </div>
-                        <div class = "contact_img"><img class = "contact_detail_img" src = {this.props.contact_img} alt = "profile"/></div>
                     </div>
                 </div>
             </div>

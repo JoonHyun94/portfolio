@@ -9,27 +9,32 @@ class Project extends React.Component {
                 
                 <div class = "project_body">
                     <div class = "kh_project">
-                        <h1 class = "project_content_title">KHOB(취업정보 사이트)</h1>
-                        <div class = "kh_project_img"><img class = "kh_img" src = {this.props.image} alt = "profile"/></div>
+                        <h1 class = "project_detail_title">KHOB(취업정보 사이트)</h1>
+                        <div class = "kh_project_img">
+                            <img class = "kh_img" src = {this.props.image} alt = "kh_img"/>
+                        </div>
                         <div class = "kh_project_content">
                             <h1 class = "project_content_title">Introduction</h1>
                             <div class = "project_introduction">{this.props.khProjectIntroduction}</div>
                             <h1 class = "project_content_title">MyRule</h1>
                             <div class = "project_myrule">{this.props.khProjectMyrule}</div>
                         </div>
+                        <div class = "skill">
+                            <span class = "skills">#Java</span>
+                            <span class = "skills">#SpringFramework(MVC)</span>
+                            <span class = "skills">#JSP</span>
+                            <span class = "skills">#CSS</span>
+                            <span class = "skills">#JavaScript</span>
+                            <span class = "skills">#Ajax</span>
+                            <span class = "skills">#Oracle</span>
+                        </div>
+                        <a href = "www.naver.com">
+                            <div class = "git">
+                                <img class = "github" src = {this.props.github} alt = "github"/>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                
-                <div class = "skill">
-                    <span class = "skills">#Java</span>
-                    <span class = "skills">#SpringFramework(MVC)</span>
-                    <span class = "skills">#JSP</span>
-                    <span class = "skills">#CSS</span>
-                    <span class = "skills">#JavaScript</span>
-                    <span class = "skills">#Ajax</span>
-                    <span class = "skills">#Oracle</span>
-                </div>
-
             </div>
         )
     }

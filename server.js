@@ -45,7 +45,8 @@ app.get('/api/project', (req, res) => {
                                         진행기간 : 2019.06.19 ~ 2019.08.12`,
                 'khProjectMyrule' : `메인 홈페이지 기업검색 기능
                                     검색한 기업의 간략한 정보 게시판
-                                    기업리뷰게시판 (게시글 CRUD, 게시글 추천, 댓글 작성 및 추천)`
+                                    기업리뷰게시판 (게시글 CRUD, 게시글 추천, 댓글 작성 및 추천)`,
+                'github' : '/images/github.png'
             }
         ]
     );
@@ -59,8 +60,7 @@ app.get('/api/contact_me', (req, res) => {
                 'contact_title' : 'Contact Me',
                 'contact_name' : '신준현(ShinJoonHyun)',
                 'contact_email' : 'email : slio_7@naver.com',
-                'contact_phone' : 'phone : 010-9582-9596',
-                'contact_img' : '/images/JoonHyun.jpg'
+                'contact_phone' : 'phone : 010-9582-9596'
             }
         ]
     );

@@ -153,6 +153,7 @@ class App extends Component {
               image = {i.image}
               khProjectIntroduction = {i.khProjectIntroduction}
               khProjectMyrule = {i.khProjectMyrule}
+              github = {i.github}
             />
             );
           }) :
@@ -167,7 +168,6 @@ class App extends Component {
               contact_name = {i.contact_name}
               contact_email = {i.contact_email}
               contact_phone = {i.contact_phone}
-              contact_img = {i.contact_img}
             />
             );
           }) :
