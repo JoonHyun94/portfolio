@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Header from './components/header';
 import Info_me from "./components/info_me";
 import Project from "./components/project";
 import Contact_me from "./components/contact_me";
@@ -21,6 +22,8 @@ const styles = theme => ({
 });
 
 
+
+
 // 메인 타이틀 interval animation
 var mainTitle = document.getElementsByClassName('main_title_hello');
 var toggle = false;
@@ -28,6 +31,9 @@ var handle = true;
 // 윈도우 시작 시 interval()함수 실행
 window.onload = function() {
   interval();
+  document.getElementById("close").onclick = function() {
+    document.getElementsByClassName('header')[0].style.display = 'none';
+  };
 }
 // 0.2후 main_title 출력
 function interval() {
@@ -123,57 +129,63 @@ class App extends Component {
     const {classes} = this.props;
 
     return (
-      <div id = "body">
-        {/* main */}
-        <div class = "main">
-          <div class = "title">
-            <span class = "main_title_hello"><h1 class = "main_h1">안녕하세요</h1></span>
-            <span class = "main_title_about"><h1 class = "main_h1">신준현의 포트폴리오입니다</h1></span>
+      <div>
+        {/* header */}
+        <Header />
+
+        <div id = "body">
+          {/* main */}
+          <div id = "main">
+            <div class = "title">
+              <span class = "main_title_hello"><h1 class = "main_h1">안녕하세요</h1></span>
+              <span class = "main_title_about"><h1 class = "main_h1">신준현의 포트폴리오입니다</h1></span>
+            </div>
           </div>
+
+          {/* about_me */}
+          {this.state.about_data ? this.state.about_data.map(i => { return (<Info_me
+                key = {i.id}
+                image = {i.image}
+                name = {i.name}
+                index = {i.index}
+                about = {i.about}
+                aboutContent = {i.aboutContent}
+              />
+              );
+            }) :
+            // 데이터를 불러 오지 못할 경우(로딩페이지)
+            <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
+          }
+
+          {/* skills */}
+          {this.state.project_data ? this.state.project_data.map(i => { return (<Project
+                index = {i.index}
+                projectTitle = {i.projectTitle}
+                image = {i.image}
+                khProjectIntroduction = {i.khProjectIntroduction}
+                khProjectMyrule = {i.khProjectMyrule}
+                github = {i.github}
+              />
+              );
+            }) :
+            // 데이터를 불러 오지 못할 경우(로딩페이지)
+            <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
+          }
+
+          {/* contact_me */}
+          {this.state.contact_data ? this.state.contact_data.map(i => { return (<Contact_me
+                index = {i.index}
+                contact_title = {i.contact_title}
+                contact_name = {i.contact_name}
+                contact_email = {i.contact_email}
+                contact_phone = {i.contact_phone}
+              />
+              );
+            }) :
+            // 데이터를 불러 오지 못할 경우(로딩페이지)
+            <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
+          }
         </div>
-        {/* about_me */}
-        {this.state.about_data ? this.state.about_data.map(i => { return (<Info_me
-              key = {i.id}
-              image = {i.image}
-              name = {i.name}
-              index = {i.index}
-              about = {i.about}
-              aboutContent = {i.aboutContent}
-            />
-            );
-          }) :
-          // 데이터를 불러 오지 못할 경우(로딩페이지)
-          <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
-        }
-
-        {/* skills */}
-        {this.state.project_data ? this.state.project_data.map(i => { return (<Project
-              index = {i.index}
-              projectTitle = {i.projectTitle}
-              image = {i.image}
-              khProjectIntroduction = {i.khProjectIntroduction}
-              khProjectMyrule = {i.khProjectMyrule}
-              github = {i.github}
-            />
-            );
-          }) :
-          // 데이터를 불러 오지 못할 경우(로딩페이지)
-          <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
-        }
-
-        {/* contact_me */}
-        {this.state.contact_data ? this.state.contact_data.map(i => { return (<Contact_me
-              index = {i.index}
-              contact_title = {i.contact_title}
-              contact_name = {i.contact_name}
-              contact_email = {i.contact_email}
-              contact_phone = {i.contact_phone}
-            />
-            );
-          }) :
-          // 데이터를 불러 오지 못할 경우(로딩페이지)
-          <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
-        }
       </div>
     );
   }

@@ -5,12 +5,52 @@
   font-weight: normal;
 }
 
-.gray-background {
-  background: darkgray;
+html {
+  scroll-behavior: smooth !important; /* 스크롤 부드럽게 */
 }
 
+a:link { 
+  color: white; text-decoration: none;
+}
+a:visited { 
+  color: white; text-decoration: none;
+}
+a:hover { 
+  color: white; text-decoration: none;
+}
+
+/* header */
+.header {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0);
+  z-index :9999 /* 맨앞으로 */
+}
+.menu {
+  float: right;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0 0 0 1.5vw;
+  opacity: 0.5;
+  background-color: black;
+
+}
+.menu li {
+  text-align: center;
+  list-style:none; /* 블릿 삭제 */
+  float: left;
+  margin: 2.5vw;
+  font-family: JejuGothic;
+  font-size: 1vw;
+}
+/* header */
+
 /* main(header) */
-.main {
+#main {
+  background-color: black;
   position: relative;
   width: 100%;
   max-width: 100%;
@@ -22,7 +62,8 @@
   background-size: cover;
   display: flex;
 }
-.main::after{
+#main::after{
+  background-color: black;
   background-image: url(./images/main.png);
   width: 100%;
   max-width: 100%;
@@ -78,7 +119,7 @@ span {
 /* main(header) */
 
 /* about_me */
-.me {
+#me {
   display: flex;
 }
 
@@ -157,7 +198,7 @@ span {
 
 /* project */
 /* project_header */
-.project {
+#project {
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -279,7 +320,7 @@ span {
 
 /* contact */
 /* contact_header */
-.contact_me {
+#contact_me {
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -349,17 +390,81 @@ span {
 /* contact_body */
 /* contact */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media ( max-width: 575px ) {
+  /* max-width-header */
+  #close:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 2vw;
+    margin-left: 5vw;
+    height: 3vw;
+    border: solid white;
+    border-width: 0 0.7vw 0.7vw 0;
+    transform: rotate(45deg);
+  }
+  #close:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 2vw;
+    margin-left: 5vw;
+    height: 3vw;
+    border: solid white;
+    border-width: 0 0.7vw 0.7vw 0;
+    transform: rotate(-45deg);
+  }
+  .menu {
+    width: 100%;
+    border-radius: 0 0 1.5vw 1.5vw;
+  }
+  .menu li {
+    margin: 2.5vw;
+    list-style:none; /* 블릿 삭제 */
+    float: right;
+    font-size: 3vw;
+  }
+  /* max-width-header */
+
   body{
     height: 100%;
   }
 
   /* max-width-main */
-  .main {
+  #main {
     height: 100vmax;
     width: 100vmax;
   }
-  .main::after {
+  #main::after {
     height: 100vmax;
     width: 100vmax;
   }
@@ -374,7 +479,7 @@ span {
   /* max-width-main */
 
   /* max-width-about_me */
-  .me {
+  #me {
     flex-wrap: wrap;
     width: 100%;
     height: auto;

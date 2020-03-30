@@ -3,7 +3,7 @@ import React from 'react';
 class Project extends React.Component {
     render() {
         return (
-            <div class = "project">
+            <div id = "project">
                 <div class = "index">{this.props.index}</div>
                 <div class = "project_title"><h1 class = "project_h1">{this.props.projectTitle}</h1></div>
                 

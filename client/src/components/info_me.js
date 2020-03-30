@@ -3,7 +3,7 @@ import React from 'react';
 class Info_me extends React.Component {
     render() {
         return (
-            <div class = "me">
+            <div id = "me">
                 <div class = "index">{this.props.index}</div>
 
                 <div class = "info_me">

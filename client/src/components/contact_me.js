@@ -3,7 +3,7 @@ import React from 'react';
 class Contact_me extends React.Component {
     render() {
         return (
-            <div class = "contact_me">
+            <div id = "contact_me">
                 <div class = "index">{this.props.index}</div>
                 <div class = "contact_title"><h1 class = "contact_h1">{this.props.contact_title}</h1></div>
                 
