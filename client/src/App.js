@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Header from './components/header';
+import Main from './components/main';
 import Info_me from "./components/info_me";
 import Project from "./components/project";
 import Contact_me from "./components/contact_me";
@@ -20,58 +21,6 @@ const styles = theme => ({
     margin: theme.spacing.unit * 2
   }
 });
-
-
-
-
-// 메인 타이틀 interval animation
-var mainTitle = document.getElementsByClassName('main_title_hello');
-var toggle = false;
-var handle = true;
-// 윈도우 시작 시 interval()함수 실행
-window.onload = function() {
-  interval();
-  document.getElementById("close").onclick = function() {
-    document.getElementsByClassName('header')[0].style.display = 'none';
-  };
-}
-// 0.2후 main_title 출력
-function interval() {
-  setTimeout(function() {
-    mainTitle[0].style.backgroundSize = "180% 400%";
-  }, 200);
-  // 이후 interval 시작
-  startInterval();
-}
-
-function startInterval() {
-  // interval
-  setInterval(function() {
-    if(handle) { // handle이 'true'일 경우 2초 후 interval_title()함수 실행
-      handle=setTimeout(function() {
-        interval_title(); // 'main_title_hello' 출력 및 'main_title_about' 사라짐
-        mainTitle = document.getElementsByClassName('main_title_about'); // 'mainTitle' 변경
-        handle = false; // handle 변경
-      }, 3000);
-    } else { // handle이 'false'일 경우 2초 후 interval_title()함수 실행
-      handle=setTimeout(function() {
-        interval_title(); // 'main_title_about' 출력 및 'main_title_hello' 사라짐
-        mainTitle = document.getElementsByClassName('main_title_hello'); // 'mainTitle' 변경
-        handle = true; // handle 변경
-      }, 3000);
-    }
-  }, 3000)
-}
-function interval_title() {
-  if(toggle) {
-    mainTitle[0].style.backgroundSize = "180% 400%";
-  } else {
-    mainTitle[0].style.backgroundSize = "0% 0%";
-  }
-  toggle = !toggle;
-}
-// 메인 타이틀 interval animation
-
 
 class App extends Component {
   state = {
@@ -135,12 +84,7 @@ class App extends Component {
 
         <div id = "body">
           {/* main */}
-          <div id = "main">
-            <div class = "title">
-              <span class = "main_title_hello"><h1 class = "main_h1">안녕하세요</h1></span>
-              <span class = "main_title_about"><h1 class = "main_h1">신준현의 포트폴리오입니다</h1></span>
-            </div>
-          </div>
+          <Main/>
 
           {/* about_me */}
           {this.state.about_data ? this.state.about_data.map(i => { return (<Info_me
