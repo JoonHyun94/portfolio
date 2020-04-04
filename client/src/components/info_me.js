@@ -22,7 +22,7 @@ const Index = styled.div`
     white-space: pre-line;
     margin-top: 1.5vw;
     margin-left: 1.5vw;
-    font-family:JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1.2vw;
     font-weight: 900;
 `
@@ -82,7 +82,7 @@ const Name = styled.div`
     text-align:center;
     margin-bottom: 5vw;
     white-space: pre;
-    font-family:JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1.5vw;
     ${customMedia.lessThan('maxmobile')`
         white-space: pre-line;
@@ -97,7 +97,7 @@ const Name = styled.div`
 const Info = styled.div`
     text-align:center;
     white-space: pre;
-    font-family:JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1vw;
     ${customMedia.lessThan('maxmobile')`
         white-space: pre-line;
@@ -129,7 +129,7 @@ const About_title = styled.div`
     position: absolute;
     width: auto;
     top: 17%;
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 3vw;
     text-decoration: none;
     border-bottom: 0.15vw solid #FACC2E;
@@ -146,7 +146,7 @@ const About_content = styled.div`
     text-align: justify;
     width: auto;
     line-height: 2.2vw;
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1.2vw;
     top: 32%;
     white-space: pre-line;

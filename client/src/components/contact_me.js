@@ -21,7 +21,7 @@ const Index = styled.div`
     white-space: pre-line;
     margin-top: 1.5vw;
     margin-left: 1.5vw;
-    font-family:JejuGothic;
+    font-family:JejuGothic, NanumGothic;
     font-size: 1.2vw;
     font-weight: 900;
 `
@@ -42,7 +42,7 @@ const Contact_title = styled.div`
     text-decoration: none;
     border-bottom: 0.15vw solid #FACC2E;
     padding-bottom:0.5vw;
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1.5vw;
 
     ${customMedia.lessThan('maxmobile')`
@@ -82,25 +82,45 @@ const Contact_detail = styled.div`
     text-align: justify;
 `
 const Contact_name = styled.h1`
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 2.5vw;
     margin-bottom: 4vw;
         
     ${customMedia.lessThan('maxmobile')`
-        font-family: JejuGothic;
+        font-family: JejuGothic, NanumGothic;
         font-size: 4vw;
         margin-bottom: 6vw;
     `}
 `
 const Contact_email_phone = styled.div`
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1.5vw;
     line-height: 3vw;
     
     ${customMedia.lessThan('maxmobile')`
-        font-family: JejuGothic;
+        font-family: JejuGothic, NanumGothic;
         font-size: 3vw;
         line-height: 4vw;
+    `}
+`
+const Send_mail = styled.button`
+    position: absolute;
+    top: 75%;
+    left: 70%;
+    width: auto;
+    height: fit-content;
+    font-family: JejuGothic, NanumGothic;
+    font-size: 1.5vw;
+
+    ${customMedia.lessThan('maxmobile')`
+        left: 75%;
+        font-size: 2.5vw;
+    `}
+
+    ${customMedia.lessThan('minmobile')`
+        top: 70%;
+        left: 70%;
+        font-size: 2.5vw;
     `}
 `
 
@@ -118,6 +138,7 @@ class Contact_me extends React.Component {
                             <Contact_email_phone>{this.props.contact_email}</Contact_email_phone>
                             <Contact_email_phone>{this.props.contact_phone}</Contact_email_phone>
                         </Contact_detail>
+                        <Send_mail>Send-mail</Send_mail>
                     </Contact_content>
                 </Contact_body>
             </Contactdisplay>

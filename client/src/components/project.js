@@ -21,7 +21,7 @@ const Index = styled.div`
     white-space: pre-line;
     margin-top: 1.5vw;
     margin-left: 1.5vw;
-    font-family:JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1.2vw;
     font-weight: 900;
 `
@@ -38,7 +38,7 @@ const Project_title = styled.div`
     text-decoration: none;
     border-bottom: 0.15vw solid #FACC2E;
     padding-bottom:0.5vw;
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1.5vw;
 
     ${customMedia.lessThan('maxmobile')`
@@ -62,7 +62,7 @@ const Project_detail_title = styled.h1`
     margin-left: 2vw;
     margin-bottom: 1vw;
     width: 85%;
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 2vw;
 
     ${customMedia.lessThan('maxmobile')`
@@ -109,13 +109,13 @@ const Kh_img = styled.img`
 const Project_content_title = styled.h1`
     margin-bottom: 1vw;
     width: 85%;
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 2vw;
 
     ${customMedia.lessThan('maxmobile')`
         margin-bottom: 1vw;
         width: 100%;
-        font-family: JejuGothic;
+        font-family: JejuGothic, NanumGothic;
         font-size: 4vw;
     `}
 `
@@ -135,7 +135,7 @@ const Kh_project_content = styled.div`
 const Project_introduction = styled.div`
     margin-bottom: 4vw;
     white-space: pre-line;
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1vw;
     line-height: 2vw;
 
@@ -147,7 +147,7 @@ const Project_introduction = styled.div`
 `
 const Project_myrule = styled.div`
     white-space: pre-line;
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1vw;
     line-height: 2vw;
 
@@ -172,15 +172,15 @@ const Skill = styled.div`
         width: 80%;
     `}
 `
-const Skills = styled.span`
+const Skills = styled.div`
     cursor: pointer;
-    background-color: rgb(31, 100, 165);
+    color: rgb(31, 100, 165);
     margin-right: 2vw;
     width: fit-content;
     height: fit-content;
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1.5vw;
-    
+
     ${customMedia.lessThan('maxmobile')`
         font-size: 2.5vw;
         line-height: 3vw;

@@ -22,9 +22,9 @@ var Headermenu = styled.div`
     width: 100%;
     height: auto;
     background-color: rgba(255, 255, 255, 0);
-    z-index :9999
+    z-index :9999;
 `
-const Menu = styled.ul`
+var Menu = styled.ul`
     float: right;
     margin: 0;
     padding: 0;
@@ -39,22 +39,24 @@ const Menu = styled.ul`
     `}
 `
 
-const Menuli = styled.li`
+var Menuli = styled.li`
     text-align: center;
     list-style:none; /* 블릿 삭제 */
     float: left;
     margin: 2.5vw;
-    font-family: JejuGothic;
+    font-family: JejuGothic, NanumGothic;
     font-size: 1vw;
     ${customMedia.lessThan('maxmobile')`
         margin: 2.5vw;
-        list-style:none; /* 블릿 삭제 */
-        float: right;
         font-size: 3vw;
     `}
 `
 const Close = styled.div`
     ${customMedia.lessThan('maxmobile')`
+        cursor: pointer;
+        position: absolute;
+        top: 0.5vw;
+        margin-left: 90%;
         &:before {
             content: '';
             position: absolute;
@@ -84,10 +86,11 @@ const Close = styled.div`
 `
 const Open = styled.div`
     ${customMedia.lessThan('maxmobile')`
+        cursor: pointer;
         float: right;
         content: '';
         position: absolute;
-        top: 0;
+        top: 1vw;
         left: 0;
         margin-top: 2vw;
         margin-left: 5vw;
@@ -134,15 +137,27 @@ class Header extends React.Component {
     }
 
     closeMenu = () => {
-        console.log("sss");
         Headermenu = styled.div`
             position: fixed;
             width: 100%;
             height: auto;
             background-color: rgba(255, 255, 255, 0);
-            animation: ${movingRight} 1s;
+            animation: ${movingRight} 0.5s;
             margin-left: 90%;
             z-index :9999
+        `
+        Menuli = styled.li`
+            text-align: center;
+            list-style:none; /* 블릿 삭제 */
+            float: left;
+            margin: 2.5vw;
+            font-family: JejuGothic, NanumGothic;
+            font-size: 1vw;
+            ${customMedia.lessThan('maxmobile')`
+                float: right;
+                margin: 2.5vw;
+                font-size: 3vw;
+            `}
         `
         this.setState({
             clicked: false,
@@ -150,14 +165,26 @@ class Header extends React.Component {
         });
     }
     openMenu = () => {
-        console.log("ddd");
         Headermenu = styled.div`
             position: fixed;
             width: 100%;
             height: auto;
             background-color: rgba(255, 255, 255, 0);
-            animation: ${movingLeft} 1s;
+            animation: ${movingLeft} 0.5s;
             z-index :9999
+        `
+        Menuli = styled.li`
+            text-align: center;
+            list-style:none; /* 블릿 삭제 */
+            float: left;
+            margin: 2.5vw;
+            font-family: JejuGothic, NanumGothic;
+            font-size: 1vw;
+            ${customMedia.lessThan('maxmobile')`
+                float: left;
+                margin: 2.5vw;
+                font-size: 3vw;
+            `}
         `
         this.setState({
             clicked: true
@@ -179,12 +206,12 @@ class Header extends React.Component {
                     </Headermenu> : 
                     <Headermenu>
                         <Menu>
+                            <Open onClick={this.openMenu}/>
                             <Menuli><Anchor href = "#Maindisplay">Home</Anchor></Menuli>
                             <Menuli><Anchor href = "#Me">About</Anchor></Menuli>
                             <Menuli><Anchor href = "#Projectdisplay">Project</Anchor></Menuli>
                             <Menuli><Anchor href = "#Contactdisplay">Contact</Anchor></Menuli>
-                            <Open onClick={this.openMenu}/>
-                        </Menu>
+                    </Menu>
                     </Headermenu>
                 }
             </div>

@@ -13,11 +13,27 @@
         "http-middleware": "^1.0.5",
         "http-proxy-middleware": "^1.0.3",
         "nodemon": "^2.0.2",
+        "react-app-polyfill": "^1.0.6",
         "react-gsap": "^1.2.0",
+        "react-motion": "^0.5.2",
+        "react-typist": "^2.0.5",
         "styled-components": "^5.0.1",
         "styled-media-query": "^2.1.2"
     },
     "devDependencies": {
         "concurrently": "^4.0.1"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "ie 11",
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     }
 }
