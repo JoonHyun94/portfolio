@@ -161,7 +161,7 @@ class App extends Component {
             </Loading>
             }
             
-            {/* skills */}
+            {/* Project */}
             {project_data ? <Project
               index = {project_data.index}
               projectTitle = {project_data.projectTitle}
