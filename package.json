@@ -16,11 +16,11 @@
     "styled-media-query": "^2.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node App.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
@@ -39,5 +39,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://JoonHyun94.github.io/React-JoonHyun-Portfolio/client"
+  "homepage": "http://JoonHyun94.github.io/React-JoonHyun-Portfolio",
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
+  }
 }
