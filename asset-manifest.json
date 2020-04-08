@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/React-JoonHyun-Portfolio/static/css/main.54e7e83c.chunk.css",
+    "main.js": "/React-JoonHyun-Portfolio/static/js/main.89a82e29.chunk.js",
+    "main.js.map": "/React-JoonHyun-Portfolio/static/js/main.89a82e29.chunk.js.map",
+    "runtime-main.js": "/React-JoonHyun-Portfolio/static/js/runtime-main.861f82ef.js",
+    "runtime-main.js.map": "/React-JoonHyun-Portfolio/static/js/runtime-main.861f82ef.js.map",
+    "static/js/2.8008ace0.chunk.js": "/React-JoonHyun-Portfolio/static/js/2.8008ace0.chunk.js",
+    "static/js/2.8008ace0.chunk.js.map": "/React-JoonHyun-Portfolio/static/js/2.8008ace0.chunk.js.map",
+    "index.html": "/React-JoonHyun-Portfolio/index.html",
+    "precache-manifest.a40da37352df4403320a4e4f081fe2d3.js": "/React-JoonHyun-Portfolio/precache-manifest.a40da37352df4403320a4e4f081fe2d3.js",
+    "service-worker.js": "/React-JoonHyun-Portfolio/service-worker.js",
+    "static/css/main.54e7e83c.chunk.css.map": "/React-JoonHyun-Portfolio/static/css/main.54e7e83c.chunk.css.map",
+    "static/js/2.8008ace0.chunk.js.LICENSE.txt": "/React-JoonHyun-Portfolio/static/js/2.8008ace0.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/React-JoonHyun-Portfolio/static/media/JejuGothic.de153ca7.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.861f82ef.js",
+    "static/js/2.8008ace0.chunk.js",
+    "static/css/main.54e7e83c.chunk.css",
+    "static/js/main.89a82e29.chunk.js"
+  ]
+}
