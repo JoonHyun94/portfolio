@@ -62,17 +62,17 @@ class App extends Component {
 
     setInterval(this.loadingText, 20);
 
-    this.callApi_about()
-      .then(res => this.setState({about_data: res}))
-      .catch(err => console.log(err));
+    // this.callApi_about()
+    //   .then(res => this.setState({about_data: res}))
+    //   .catch(err => console.log(err));
       
-    this.callApi_project()
-      .then(res => this.setState({project_data: res}))
-      .catch(err => console.log(err));
+    // this.callApi_project()
+    //   .then(res => this.setState({project_data: res}))
+    //   .catch(err => console.log(err));
 
-    this.callApi_contact()
-      .then(res => this.setState({contact_data: res}))
-      .catch(err => console.log(err));
+    // this.callApi_contact()
+    //   .then(res => this.setState({contact_data: res}))
+    //   .catch(err => console.log(err));
   }
 
   callApi_about = async() => {
@@ -141,7 +141,8 @@ class App extends Component {
             <Main/>
 
             {/* about_me */}
-            {about_data ? <Info_me
+            <Info_me/>
+            {/* {about_data ? <Info_me
               image = {about_data.image}
               name = {about_data.name}
               index = {about_data.index}
@@ -159,10 +160,11 @@ class App extends Component {
                     }
               </Motion>
             </Loading>
-            }
+            } */}
             
             {/* Project */}
-            {project_data ? <Project
+            <Project/>
+            {/* {project_data ? <Project
               index = {project_data.index}
               projectTitle = {project_data.projectTitle}
               image = {project_data.image}
@@ -181,10 +183,11 @@ class App extends Component {
                     }
               </Motion>
             </Loading>
-            }
+            } */}
 
             {/* contact_me */}
-            {contact_data ? <Contact_me
+            <Contact_me/>
+            {/* {contact_data ? <Contact_me
               index = {contact_data.index}
               contact_title = {contact_data.contact_title}
               contact_name = {contact_data.contact_name}
@@ -202,7 +205,7 @@ class App extends Component {
                     }
               </Motion>
             </Loading>
-            }
+            } */}
 
           </div>
         </div>

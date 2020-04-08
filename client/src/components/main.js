@@ -23,7 +23,7 @@ const Maindisplay = styled.div`
     display: flex;
     &:after {
         background-color: black;
-        background-image: url(./images/main.png);
+        background-image: url(./public/images/main.png);
         width: 100%;
         max-width: 100%;
         height: 100vh;

@@ -212,22 +212,32 @@ class Project extends React.Component {
     render() {
         return (
             <Projectdisplay id = "Projectdisplay">
-                <Index>{this.props.index}</Index>
-                <Project_title><Project_h1>{this.props.projectTitle}</Project_h1></Project_title>
+                <Index>SHIN <br></br> ; <br></br> PORT <br></br> FOLIO</Index>
+                <Project_title><Project_h1>Project</Project_h1></Project_title>
                 
                 <Project_body>
                     <Kh_project>
 
                         <Project_detail_title>KHOB(취업정보 사이트)</Project_detail_title>
                         <Kh_project_img>
-                            <Kh_img src = {this.props.image} alt = "kh_img"/>
+                            <Kh_img src = '/images/kh_project_img.jpg' alt = "kh_img"/>
                         </Kh_project_img>
 
                         <Kh_project_content>
                             <Project_content_title>Introduction</Project_content_title>
-                            <Project_introduction>{this.props.khProjectIntroduction}</Project_introduction>
+                            <Project_introduction>
+                                주제 : 취업 정보 통합 포털사이트<br></br>
+                                인원 : 5명(팀장 포함)<br></br>
+                                배경 : 기업에 관한 정보와 취업 정보를 무료로 조회하는 사이트가 존재하지 않음 → "기업조회 + 정보 제공하는 웹사이트"<br></br>
+                                참고 모델 사이트 : 크레딧잡 + 잡코리아 + 자소설 닷컴<br></br>
+                                진행기간 : 2019.06.19 ~ 2019.08.12<br></br>
+                            </Project_introduction>
                             <Project_content_title>MyRule</Project_content_title>
-                            <Project_myrule>{this.props.khProjectMyrule}</Project_myrule>
+                            <Project_myrule>
+                                메인 홈페이지 기업검색 기능<br></br>
+                                검색한 기업의 간략한 정보 게시판<br></br>
+                                기업리뷰게시판 (게시글 CRUD, 게시글 추천, 댓글 작성 및 추천)<br></br>
+                            </Project_myrule>
                         </Kh_project_content>
 
                         <Skill>
@@ -242,7 +252,7 @@ class Project extends React.Component {
 
                         <a href = "www.naver.com">
                             <Git>
-                                <Github src = {this.props.github} alt = "github"/>
+                                <Github src = '/images/github.png' alt = "github"/>
                             </Git>
                         </a>
 

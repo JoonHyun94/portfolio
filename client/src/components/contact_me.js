@@ -128,15 +128,15 @@ class Contact_me extends React.Component {
     render() {
         return (
             <Contactdisplay id = "Contactdisplay">
-                <Index>{this.props.index}</Index>
-                <Contact_title><Contact_h1>{this.props.contact_title}</Contact_h1></Contact_title>
+                <Index>SHIN <br></br> ; <br></br> PORT <br></br> FOLIO</Index>
+                <Contact_title><Contact_h1>Contact Me</Contact_h1></Contact_title>
                 
                 <Contact_body>
                     <Contact_content>
                         <Contact_detail>
-                            <Contact_name>{this.props.contact_name}</Contact_name>
-                            <Contact_email_phone>{this.props.contact_email}</Contact_email_phone>
-                            <Contact_email_phone>{this.props.contact_phone}</Contact_email_phone>
+                            <Contact_name>신준현(ShinJoonHyun)</Contact_name>
+                            <Contact_email_phone>email : slio_7@naver.com</Contact_email_phone>
+                            <Contact_email_phone>phone : 010-9582-9596</Contact_email_phone>
                         </Contact_detail>
                         <Send_mail>Send-mail</Send_mail>
                     </Contact_content>

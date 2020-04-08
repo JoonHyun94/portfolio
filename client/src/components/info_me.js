@@ -164,19 +164,32 @@ class Info_me extends React.Component {
     render() {
         return (
             <Me id = "Me">
-                <Index>{this.props.index}</Index>
+                <Index>SHIN <br></br> ; <br></br> PORT <br></br> FOLIO</Index>
 
                 <Infome>
-                    <Img><Photo src = {this.props.image} alt = "profile"/></Img>
+                    <Img><Photo src = '/images/JoonHyun.jpg' alt = "profile"/></Img>
                     <Info_me_child>
-                        <Name><b>{this.props.name}</b></Name>
-                        <Info>{this.props.about}</Info>
+                        <Name><b>신준현(Shin Joon Hyun)</b></Name>
+                        <Info>
+                            한신대학교 e-비즈니스학 학사<br></br><br></br>
+                            &lt; KH 정보교육원 &gt; 자바(JAVA) 프레임워크 개발자 양성과정
+                        </Info>
                     </Info_me_child>
                 </Infome>
 
                 <About_me>
                     <About_title>About Me</About_title>
-                    <About_content>{this.props.aboutContent}</About_content>
+                    <About_content>
+                        어릴때 부터 호기심이 많은 성격에 만들어 보았던 간단한 계산기 프로그램으로 무언가를 
+                        만드는 것의 재미를 느끼게 되었고 그때부터 개발자를 꿈꾸게 되었습니다. 
+                        그래서 대학교에서 동아리활동을 통해 자연스럽게 많은것을 개발하게 될 수 있었습니다.
+                        그 중 Javascript가 가지고 있는 가능성과 다양성에 매력을 느끼게 되어
+                        웹 어플리케이션 개발자가 되기 위해 많은 노력을 하고 있습니다.<p></p>
+                        저는 제 목표를 '잘하는' 개발자로 삼아서 더 공부하고 있습니다. 
+                        경력을 쌓은 개발자는 경력만 쌓이면 자연스럽게 되지만 
+                        '잘하는'개발자는 경력뿐만 아니라 매일 공부하여 개발자로써 더 높은 곳을 바라보고 있기 때문입니다. 
+                        저는 계속 공부하여 '잘하는'개발자로써 남고 싶습니다.
+                    </About_content>
                 </About_me>
             </Me>
         )
