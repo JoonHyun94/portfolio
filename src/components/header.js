@@ -1,4 +1,5 @@
 import React from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 import styled, { keyframes } from 'styled-components';
 import { generateMedia} from 'styled-media-query';
 
@@ -40,6 +41,8 @@ var Menu = styled.ul`
 `
 
 var Menuli = styled.li`
+    color: white;
+    cursor: pointer;
     text-align: center;
     list-style:none; /* 블릿 삭제 */
     float: left;
@@ -82,7 +85,6 @@ const Close = styled.div`
             transform: rotate(-45deg);
         }
     `}
-
 `
 const Open = styled.div`
     ${customMedia.lessThan('maxmobile')`
@@ -125,7 +127,7 @@ const Open = styled.div`
     `}
 `
 const Anchor = styled(Menuli.withComponent("a"))`
-        margin: 0 auto;
+    margin: 0 auto;
 `
 
 class Header extends React.Component {
@@ -136,13 +138,18 @@ class Header extends React.Component {
         };
     }
 
+    scrollToMain (param_id) {
+        var location = document.querySelector(param_id).offsetTop;
+        scroll.scrollTo(location); // react-scroll
+    }
+
     closeMenu = () => {
         Headermenu = styled.div`
             position: fixed;
             width: 100%;
             height: auto;
             background-color: rgba(255, 255, 255, 0);
-            animation: ${movingRight} 0.5s;
+            animation: ${ movingRight } 0.5s;
             margin-left: 90%;
             z-index :9999
         `
@@ -170,7 +177,7 @@ class Header extends React.Component {
             width: 100%;
             height: auto;
             background-color: rgba(255, 255, 255, 0);
-            animation: ${movingLeft} 0.5s;
+            animation: ${ movingLeft } 0.5s;
             z-index :9999
         `
         Menuli = styled.li`
@@ -195,29 +202,29 @@ class Header extends React.Component {
         return (
             <div>
                 {
-                    this.state.clicked ? <Headermenu>
-                    <Menu>
-                        <Close onClick={this.closeMenu}/>
-                        <Menuli><Anchor href = "#Maindisplay">Home</Anchor></Menuli>
-                        <Menuli><Anchor href = "#Me">About</Anchor></Menuli>
-                        <Menuli><Anchor href = "#Projectdisplay">Project</Anchor></Menuli>
-                        <Menuli><Anchor href = "#Contactdisplay">Contact</Anchor></Menuli>
-                    </Menu>
+                    this.state.clicked ? 
+                    <Headermenu>
+                        <Menu>
+                            <Close onClick={ this.closeMenu }/>
+                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Maindisplay') }>Home</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Me') }>About</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Projectdisplay') }>Project</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Contactdisplay') }>Contact</Anchor></Menuli>
+                        </Menu>
                     </Headermenu> : 
                     <Headermenu>
                         <Menu>
-                            <Open onClick={this.openMenu}/>
-                            <Menuli><Anchor href = "#Maindisplay">Home</Anchor></Menuli>
-                            <Menuli><Anchor href = "#Me">About</Anchor></Menuli>
-                            <Menuli><Anchor href = "#Projectdisplay">Project</Anchor></Menuli>
-                            <Menuli><Anchor href = "#Contactdisplay">Contact</Anchor></Menuli>
-                    </Menu>
+                            <Open onClick={ this.openMenu }/>
+                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Maindisplay') }>Home</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Me') }>About</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Projectdisplay') }>Project</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Contactdisplay') }>Contact</Anchor></Menuli>
+                        </Menu>
                     </Headermenu>
                 }
             </div>
         )
     }
 }
-
 
 export default Header;

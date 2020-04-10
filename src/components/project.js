@@ -1,5 +1,6 @@
 import React from 'react';
-import kh_project from '../images/kh_project_img.jpg'
+import kh_project from '../images/kh_project_img.jpg';
+import git_img from '../images/github.png';
 import styled from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 
@@ -251,9 +252,9 @@ class Project extends React.Component {
                             <Skills>#Oracle</Skills>
                         </Skill>
 
-                        <a href = "www.naver.com">
+                        <a href = "https://github.com/JoonHyun94/Final">
                             <Git>
-                                <Github src = '/images/github.png' alt = "github"/>
+                                <Github src = { git_img } alt = "github"/>
                             </Git>
                         </a>
 

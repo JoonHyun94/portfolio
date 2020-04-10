@@ -111,7 +111,6 @@ class App extends Component {
     this.setState({ loadingText: loadingText >= 1.0 ? 0 : loadingText + 0.01 })
   }
 
-
   render() {
     const { classes } = this.props;
     const { mainLoading, about_data, project_data, contact_data, completed } = this.state;
@@ -132,7 +131,7 @@ class App extends Component {
           </Motion>
         </Mainloading> :
         // 첫 로딩 페이지 이후
-        <div>          
+        <div>         
           {/* header */}
           <Header />
 
