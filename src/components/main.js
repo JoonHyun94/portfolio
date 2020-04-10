@@ -109,7 +109,7 @@ class Main extends React.Component {
     }
 
     mainWidth = () => {
-      setInterval(this.animateMainWidth);
+      setInterval(this.animateMainWidth, 20);
     }
 
     mainInterval = () => {
