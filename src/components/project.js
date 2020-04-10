@@ -1,4 +1,5 @@
 import React from 'react';
+import kh_project from '../images/kh_project_img.jpg'
 import styled from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 
@@ -220,7 +221,7 @@ class Project extends React.Component {
 
                         <Project_detail_title>KHOB(취업정보 사이트)</Project_detail_title>
                         <Kh_project_img>
-                            <Kh_img src = '/images/kh_project_img.jpg' alt = "kh_img"/>
+                            <Kh_img src = { kh_project } alt = "kh_img"/>
                         </Kh_project_img>
 
                         <Kh_project_content>

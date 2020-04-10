@@ -1,4 +1,5 @@
 import React from 'react';
+import profile from '../images/JoonHyun.jpg';
 import styled from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 
@@ -167,7 +168,7 @@ class Info_me extends React.Component {
                 <Index>SHIN <br></br> ; <br></br> PORT <br></br> FOLIO</Index>
 
                 <Infome>
-                    <Img><Photo src = '/images/JoonHyun.jpg' alt = "profile"/></Img>
+                    <Img><Photo src = { profile } alt = "profile"/></Img>
                     <Info_me_child>
                         <Name><b>신준현(Shin Joon Hyun)</b></Name>
                         <Info>
