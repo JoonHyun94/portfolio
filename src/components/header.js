@@ -138,7 +138,7 @@ class Header extends React.Component {
         };
     }
 
-    scrollToMain (param_id) {
+    scrollToParam (param_id) {
         var location = document.querySelector(param_id).offsetTop;
         scroll.scrollTo(location); // react-scroll
     }
@@ -168,7 +168,6 @@ class Header extends React.Component {
         `
         this.setState({
             clicked: false,
-
         });
     }
     openMenu = () => {
@@ -206,19 +205,19 @@ class Header extends React.Component {
                     <Headermenu>
                         <Menu>
                             <Close onClick={ this.closeMenu }/>
-                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Maindisplay') }>Home</Anchor></Menuli>
-                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Me') }>About</Anchor></Menuli>
-                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Projectdisplay') }>Project</Anchor></Menuli>
-                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Contactdisplay') }>Contact</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToParam('#Maindisplay') }>Home</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToParam('#Me') }>About</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToParam('#Projectdisplay') }>Project</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToParam('#Contactdisplay') }>Contact</Anchor></Menuli>
                         </Menu>
                     </Headermenu> : 
                     <Headermenu>
                         <Menu>
                             <Open onClick={ this.openMenu }/>
-                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Maindisplay') }>Home</Anchor></Menuli>
-                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Me') }>About</Anchor></Menuli>
-                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Projectdisplay') }>Project</Anchor></Menuli>
-                            <Menuli><Anchor onClick = { () => this.scrollToMain('#Contactdisplay') }>Contact</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToParam('#Maindisplay') }>Home</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToParam('#Me') }>About</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToParam('#Projectdisplay') }>Project</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToParam('#Contactdisplay') }>Contact</Anchor></Menuli>
                         </Menu>
                     </Headermenu>
                 }

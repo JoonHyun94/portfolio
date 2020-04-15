@@ -1,5 +1,6 @@
 import React from 'react';
-import kh_project from '../images/kh_project_img.jpg';
+import kh_project_img from '../images/kh_project_img.jpg';
+import pf_project_img from '../images/pf_project_img.png'
 import git_img from '../images/github.png';
 import styled from 'styled-components';
 import { generateMedia } from 'styled-media-query';
@@ -47,12 +48,22 @@ const Project_title = styled.div`
         font-size: 3vw;
     `}
 `
+const Scroll_body = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    right: 0;
+    overflow-x: scroll;
+`
 const Project_body = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-top: 3vw;
     width: 100%;
     height: auto;
+    right: 0;
+    flex-shrink: 0;
 
     ${customMedia.lessThan('maxmobile')`
         display: flex;
@@ -68,28 +79,35 @@ const Project_detail_title = styled.h1`
     font-size: 2vw;
 
     ${customMedia.lessThan('maxmobile')`
+        margin-left: 0;
         margin-bottom: 3vw;
         text-align: center;
         width: 100%;
         font-size: 3vw;
     `}
 `
-const Kh_project = styled.div`
+const Project_detail = styled.div`
     border-radius: 0.5vw;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,.1),
                 0 4px 6px -2px rgba(0,0,0,.05);
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
+    margin-left: 8vw;
+    margin-right: 8vw;
     margin-bottom: 2vw;
-    width: 85%;
+    width: 90%;
+    height: 100%;
 
     ${customMedia.lessThan('maxmobile')`
         display: flex;
         flex-direction: column;
+        position: relative;
+        width: 85%;
+        margin-left: 7.5vw;
     `}
 `
-const Kh_project_img = styled.div`
+const Project_img = styled.div`
     display: flex;
     margin-left: 2vw;
     align-items: center;
@@ -104,7 +122,7 @@ const Kh_project_img = styled.div`
         height: auto;
     `}
 `
-const Kh_img = styled.img`
+const Img = styled.img`
     width: 100%;
     height: auto;
 `
@@ -121,7 +139,7 @@ const Project_content_title = styled.h1`
         font-size: 4vw;
     `}
 `
-const Kh_project_content = styled.div`
+const Project_content = styled.div`
     margin-left: 1vw;
     display: flex;
     flex-direction: column;
@@ -169,9 +187,12 @@ const Skill = styled.div`
     height: fit-content;
 
     ${customMedia.lessThan('maxmobile')`
-        margin: 0 auto;
+        position: relative;
         margin-top: 2vw;
+        margin-left: 0;
         width: 80%;
+        left: 10%;
+        right: 10%;
     `}
 `
 const Skills = styled.div`
@@ -194,10 +215,17 @@ const Git = styled.div`
     margin: 2vw;
         
     ${customMedia.lessThan('maxmobile')`
+        position: absolute;
         width: fit-content;
         height: auto;
         margin: 2vw;
-        margin-left: 90%;
+        bottom: 1vw;
+        left: 90%;
+    `}
+`
+const Git_link = styled.a`
+    ${customMedia.lessThan('maxmobile')`
+        width: fit-content;
     `}
 `
 const Github = styled.img`
@@ -209,60 +237,224 @@ const Github = styled.img`
         height: auto;
     `}
 `
+const Left = styled.div`
+    cursor: pointer;
+    content: '';
+    opacity: 0.7;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 48%;
+        left: 3vw;
+        height: 3vw;
+        border: solid black;
+        border-radius: 5px;
+        border-width: 0 0.7vw 0.7vw 0;
+        transform: rotate(45deg);
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        top: 52%;
+        left: 3vw;
+        height: 3vw;
+        border: solid black;
+        border-radius: 5px;
+        border-width: 0 0.7vw 0.7vw 0;
+        transform: rotate(-45deg);
+    }
+
+    ${customMedia.lessThan('maxmobile')`
+        &:before {
+            top: 49%;
+            border-width: 1.6vw 1vw 1vw 0;
+        }
+        &:after {
+            top: 51%;
+            border-width: 1.6vw 1vw 1vw 0;
+        }
+    `}
+`
+const Right = styled.div`
+    cursor: pointer;
+    content: '';
+    opacity: 0.7;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 48%;
+        right: 3vw;
+        height: 3vw;
+        border: solid black;
+        border-radius: 5px;
+        border-width: 0 0.7vw 0.7vw 0;
+        transform: rotate(-45deg);
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        top: 52%;
+        right: 3vw;
+        height: 3vw;
+        border: solid black;
+        border-radius: 5px;
+        border-width: 0 0.7vw 0.7vw 0;
+        transform: rotate(45deg);
+    }
+
+    ${customMedia.lessThan('maxmobile')`
+        &:before {
+            top: 49%;
+            border-width: 1.6vw 1vw 1vw 0;
+        }
+        &:after {
+            top: 51%;
+            border-width: 1.6vw 1vw 1vw 0;
+        }
+    `}
+`
 
 class Project extends React.Component {
+
+    // project 가로 스크롤
+    // scrollLeft, Right(element: scroll, 변경할 값: 엘리먼트width, 종료시점: 10)
+    scrollToLeft () {
+        this.scrollHorizontal(document.getElementById('scroll'), -(document.getElementById('scroll').offsetWidth), 10);   
+    }
+
+    scrollToRight () {
+        this.scrollHorizontal(document.getElementById('scroll'), document.getElementById('scroll').offsetWidth, 10);   
+    }
+
+    scrollHorizontal = (element, change, duration) => {
+        var start = element.scrollLeft, // 스크롤 시작지점
+            currentTime = 0, // 현재 시간
+            increment = 0.5, // 현재 시간 증가 값
+            aa = 100;
+            
+        console.log("start : " + start)
+            
+        var animateScroll = () => {
+            currentTime += increment; // 현재시간에 0.5씩 증가
+            var val = this.moveWidth(currentTime, start, change, duration); // 움직일 width값 구하기
+            console.log(val);
+            element.scrollLeft = val; // 스크롤 시작지점(움직여진 width값 부터 시작)
+            if(currentTime < duration) { // 현재시간이 종료시점보다 작을 경우
+                setTimeout(animateScroll, 0); // setTimeout으로 재귀함수 실행
+            }
+        };
+        animateScroll(); // 화살표 클릭 시 animateScroll 첫 시작
+    }
+
+    // 움직일 width값 계산
+    moveWidth = (currentTime, start, change, duration) => {
+        currentTime /= duration / 2; // 현재시간 0.1씩 증가
+            if (currentTime < 1) {
+                return change / 2 * currentTime * currentTime + start;
+            }
+            currentTime--;
+            return -change / 2 * ( currentTime * ( currentTime - 2 ) - 1 ) + start;
+    };
+
     render() {
         return (
-            <Projectdisplay id = "Projectdisplay">
+             <Projectdisplay id = "Projectdisplay">
                 <Index>SHIN <br></br> ; <br></br> PORT <br></br> FOLIO</Index>
                 <Project_title><Project_h1>Project</Project_h1></Project_title>
-                
-                <Project_body>
-                    <Kh_project>
 
-                        <Project_detail_title>KHOB(취업정보 사이트)</Project_detail_title>
-                        <Kh_project_img>
-                            <Kh_img src = { kh_project } alt = "kh_img"/>
-                        </Kh_project_img>
+                <Scroll_body id = "scroll">
+                    { project_array.map(p => { 
+                        return <Project_body key = { p.key }>
+                            <Project_detail>
+                                <Project_detail_title>{ p.project_detail_title }</Project_detail_title>
+                                <Project_img>
+                                    <Img src = { p.project_img } alt = "project_img"/>
+                                </Project_img>
 
-                        <Kh_project_content>
-                            <Project_content_title>Introduction</Project_content_title>
-                            <Project_introduction>
-                                주제 : 취업 정보 통합 포털사이트<br></br>
-                                인원 : 5명(팀장 포함)<br></br>
-                                배경 : 기업에 관한 정보와 취업 정보를 무료로 조회하는 사이트가 존재하지 않음 → "기업조회 + 정보 제공하는 웹사이트"<br></br>
-                                참고 모델 사이트 : 크레딧잡 + 잡코리아 + 자소설 닷컴<br></br>
-                                진행기간 : 2019.06.19 ~ 2019.08.12<br></br>
-                            </Project_introduction>
-                            <Project_content_title>MyRule</Project_content_title>
-                            <Project_myrule>
-                                메인 홈페이지 기업검색 기능<br></br>
-                                검색한 기업의 간략한 정보 게시판<br></br>
-                                기업리뷰게시판 (게시글 CRUD, 게시글 추천, 댓글 작성 및 추천)<br></br>
-                            </Project_myrule>
-                        </Kh_project_content>
+                                <Project_content>
+                                    <Project_content_title>Introduction</Project_content_title>
+                                    <Project_introduction>{ p.project_intriduction }</Project_introduction>
+                                    <Project_content_title>MyRule</Project_content_title>
+                                    <Project_myrule>{ p.project_myrule }</Project_myrule>
+                                </Project_content>
 
-                        <Skill>
-                            <Skills>#Java</Skills>
-                            <Skills>#SpringFramework(MVC)</Skills>
-                            <Skills>#JSP</Skills>
-                            <Skills>#CSS</Skills>
-                            <Skills>#JavaScript</Skills>
-                            <Skills>#Ajax</Skills>
-                            <Skills>#Oracle</Skills>
-                        </Skill>
+                                <Skill>
+                                    { p.skills.map(s => { 
+                                        return <Skills>{ s }</Skills>
+                                    })}
+                                </Skill>
 
-                        <a href = "https://github.com/JoonHyun94/Final">
-                            <Git>
-                                <Github src = { git_img } alt = "github"/>
-                            </Git>
-                        </a>
+                                <Git>
+                                    <Git_link href = { p.git_source }>
+                                            <Github src = { git_img } alt = "github"/>
+                                    </Git_link>
+                                </Git>
 
-                    </Kh_project>
-                </Project_body>
+                            </Project_detail>
+                        </Project_body>
+                    })}
+                </Scroll_body>
+                <Left onClick = { () => this.scrollToLeft() }></Left>
+                <Right onClick = { () => this.scrollToRight() }></Right>
             </Projectdisplay>
         )
     }
 }
+
+// 프로젝트 배열
+const project_array =  [
+    {
+        key : 1,
+        project_detail_title: 'KHOB(취업정보 사이트)',
+        project_img: kh_project_img,
+        project_intriduction: `
+                              주제 : 취업 정보 통합 포털사이트
+                              인원 : 5명(팀장 포함)
+                              배경 : 기업에 관한 정보와 취업 정보를 무료로 조회하는 사이트가 존재하지 않음 → "기업조회 + 정보 제공하는 웹사이트"
+                              참고 모델 사이트 : 크레딧잡 + 잡코리아 + 자소설 닷컴
+                              진행기간 : 2019.06.19 ~ 2019.08.12
+                              `,
+        project_myrule: `
+                        메인 홈페이지 기업검색 기능
+                        검색한 기업의 간략한 정보 게시판
+                        기업리뷰게시판 (게시글 CRUD, 게시글 추천, 댓글 작성 및 추천)
+                        `,
+        skills: [
+            '#Java',
+            '#SpringFramework(MVC)',
+            '#JSP',
+            '#CSS',
+            '#JavaScript',
+            '#Ajax',
+            '#Oracle'
+        ],
+        git_source: 'https://github.com/JoonHyun94/Final'
+    },
+    {
+      key : 2,
+      project_detail_title: 'Portfolio',
+      project_img: pf_project_img,
+      project_intriduction: `
+                            주제 : 리액트 기반 포트폴리오 사이트
+                            인원 : 1명(본인)
+                            배경 : "프로젝트 관리를 위한 네비게이션 사이트"
+                            참고 모델 사이트 : "이규한의 포트폴리오"
+                            진행기간 : 2019.03 ~ 
+                            `,
+      project_myrule: `
+                      전체적인 사이트 개발
+                      `,
+      skills: [
+          '#React',
+          '#Node.js',
+          '#yarn',
+          '#Component-style',
+          '#React-Motion',
+          '#React-scroll',
+          '#styled-media-query'
+      ],
+      git_source: 'https://github.com/JoonHyun94/portfolio'
+    }
+  ]
 
 export default Project;

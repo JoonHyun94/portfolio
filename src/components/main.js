@@ -2,7 +2,7 @@ import React from 'react';
 import main_img from '../images/main.png';
 import styled from 'styled-components';
 import { generateMedia } from 'styled-media-query';
-import {Motion, spring} from 'react-motion';
+import { Motion, spring } from 'react-motion';
 
 // 반응형 웹
 const customMedia = generateMedia({
@@ -11,52 +11,46 @@ const customMedia = generateMedia({
 });
 
 const Maindisplay = styled.div`
-    background-image: url(${ main_img });
-    background-color: black;
-    position: relative;
+  background-image: url(${ main_img });
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  /* 배경 상단고정 및 화면 전체 표시 */
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  &:before {
+    content: "";
+    background: inherit;
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
     width: 100%;
     max-width: 100%;
     height: 100vh;
-    z-index: -1;
-    overflow: hidden;
+    filter: brightness(30%);
     /* 배경 상단고정 및 화면 전체 표시 */
     background-attachment: fixed;
     background-size: cover;
-    display: flex;
-    &:before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; bottom: 0;
-        background: inherit;
-        background-color: black;
-        width: 100%;
-        max-width: 100%;
-        height: 100vh;
-        content: "";
-        transform: scale(1.02);
-        filter: url(#blur);
-        -webkit-filter: blur(3px);
-        -ms-filter: blur(3px);
-        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
-        z-index: -9999;
-        /* 배경 상단고정 및 화면 전체 표시 */
-        background-attachment: fixed;
-        background-size: cover;
-        display: flex;
-    }
-    ${customMedia.lessThan('maxmobile')`
+    background-repeat: no-repeat;
+  }
+  ${customMedia.lessThan('maxmobile')`
+    height: 100vmax;
+    width: 100vmax;
+    &:after {
       height: 100vmax;
       width: 100vmax;
-      &:after {
-        height: 100vmax;
-        width: 100vmax;
-      }
+    }
   `}
 `
 var Main_title_hello = styled.span`
   color: white;
   font-family: Noto Sans KR,sans-serif;
   font-size: 2vw;
+  filter: none;
   /* 글자 이미지 정가운데 배치 */
   position: absolute;
   top: 43%;
@@ -73,6 +67,7 @@ var Main_title_about = styled.span`
   white-space: pre;
   font-family: Noto Sans KR,sans-serif;
   font-size: 2vw;
+  filter: none;
   /* 글자 이미지 정가운데 배치 */
   position: absolute;
   top: 57%;
@@ -122,7 +117,6 @@ class Main extends React.Component {
 
     animateMainWidth = () => {
       const { width, zIndex } = this.state;
-
       if(width === 0) {
         this.setState({ zIndex: zIndex === 9999 ? -1 : "" });
         this.mainInterval();
@@ -148,13 +142,8 @@ class Main extends React.Component {
 
     render() {
         return (
-          <Motion style={{ zIndex: spring(this.state.zIndex) }}> 
+          <Motion style={{ zIndex: spring(this.state.zIndex) }}>
             {
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <filter id = "blur">
-                  <feGaussianBlur stdDeviation = "3"/>
-                </filter>
-              </svg>,
               ({ zIndex }) => <Maindisplay id = "Maindisplay" style={Object.assign({}, this.Maindisplay, { zIndex })}>
                 <Motion style={{ width: spring(this.state.width) }}>
                   {

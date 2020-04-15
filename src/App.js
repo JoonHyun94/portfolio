@@ -7,8 +7,8 @@ import Contact_me from "./components/contact_me";
 import './App.css';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import styled from 'styled-components';
-import {Motion, spring} from 'react-motion';
-import {withStyles} from '@material-ui/core/styles';
+import { Motion, spring } from 'react-motion';
+import { withStyles } from '@material-ui/core/styles';
 
 const Mainloading = styled.div`
   position: absolute;
