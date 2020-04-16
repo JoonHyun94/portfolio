@@ -54,7 +54,8 @@ const Scroll_body = styled.div`
     width: 100%;
     height: auto;
     right: 0;
-    overflow-x: scroll;
+    overflow-x: hidden;
+    align-items: center;
 `
 const Project_body = styled.div`
     display: flex;
@@ -88,8 +89,14 @@ const Project_detail_title = styled.h1`
 `
 const Project_detail = styled.div`
     border-radius: 0.5vw;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,.1),
-                0 4px 6px -2px rgba(0,0,0,.05);
+
+    // box-shadow:  x-positon(가로) 0, 
+    //              y-position(세로) 10, 4px로 양옆으로 그림자생성,
+    //              blur(흐림) 15, 6px로 흐림적용, 
+    //              spread(그림자 확장) -3, -2px,
+    //              color(색상) rgba로 투명도 적용
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                0 4px 6px -2px rgba(0,0,0,0.05);
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -97,14 +104,14 @@ const Project_detail = styled.div`
     margin-right: 8vw;
     margin-bottom: 2vw;
     width: 90%;
-    height: 100%;
+    height: auto;
 
     ${customMedia.lessThan('maxmobile')`
         display: flex;
         flex-direction: column;
-        position: relative;
         width: 85%;
         margin-left: 7.5vw;
+        margin-bottom: 5vw;
     `}
 `
 const Project_img = styled.div`
@@ -215,17 +222,17 @@ const Git = styled.div`
     margin: 2vw;
         
     ${customMedia.lessThan('maxmobile')`
-        position: absolute;
-        width: fit-content;
         height: auto;
         margin: 2vw;
+        margin-left: 90%;
         bottom: 1vw;
-        left: 90%;
     `}
 `
 const Git_link = styled.a`
     ${customMedia.lessThan('maxmobile')`
-        width: fit-content;
+        right: 0;
+        width: 100%;
+        height: 100%;
     `}
 `
 const Github = styled.img`
@@ -437,7 +444,7 @@ const project_array =  [
       project_intriduction: `
                             주제 : 리액트 기반 포트폴리오 사이트
                             인원 : 1명(본인)
-                            배경 : "프로젝트 관리를 위한 네비게이션 사이트"
+                            배경 : "프로젝트 관리를 위한 프로젝트 네비게이션 사이트"
                             참고 모델 사이트 : "이규한의 포트폴리오"
                             진행기간 : 2019.03 ~ 
                             `,

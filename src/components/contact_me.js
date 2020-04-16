@@ -27,10 +27,6 @@ const Index = styled.div`
 `
 const Contact_h1 = styled.h1`
     margin: 0 auto;
-        
-    ${customMedia.lessThan('maxmobile')`
-
-    `}
 `
 const Contact_title = styled.div`
     position: absolute;
@@ -66,8 +62,14 @@ const Contact_content = styled.div`
     margin-bottom: 3vw;
     width: 40%;
     border-radius: 1vw;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 
-    0 4px 6px -2px rgba(0,0,0,.05);
+
+    // box-shadow:  x-positon(가로) 0, 
+    //              y-position(세로) 10, 4px로 양옆으로 그림자생성,
+    //              blur(흐림) 15, 6px로 흐림적용, 
+    //              spread(그림자 확장) -3, -2px,
+    //              color(색상) rgba로 투명도 적용
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+                0 4px 6px -2px rgba(0,0,0,0.05);
     
     ${customMedia.lessThan('maxmobile')`
         margin-bottom: 5vw;
@@ -106,21 +108,40 @@ const Contact_email_phone = styled.div`
 const Send_mail = styled.button`
     position: absolute;
     top: 75%;
-    left: 70%;
+    right: 5%;
+    cursor: pointer;
     width: auto;
     height: fit-content;
+    border: none;
+    border-radius: 8px;
+    padding: 1vw;
+    background-color: #F5DA81;
+    white-space: pre;
     font-family: JejuGothic, NanumGothic;
-    font-size: 1.5vw;
+    font-size: 1vw;
+    transition: all 0.8s, color 0.8s; // 마우스오버 시 box-shadow 0.8s, 텍스트 색깔 0.8s 설정
+    &:hover {
+        color: #fff;
+
+        // box-shadow:  x-positon(가로) +-100px로 양옆으로 그림자생성, 
+        //              y-position(세로) 0,
+        //              blur(흐림) 0, 
+        //              spread(그림자 확장) 0, 
+        //              color(색상) rgba로 투명도 적용, 
+        //              inset 안쪽에만 적용
+        box-shadow: 100px 0 0 0 rgba(0,0,0,0.25) inset, 
+                    -100px 0 0 0 rgba(0,0,0,0.25) inset;
+    }
 
     ${customMedia.lessThan('maxmobile')`
-        left: 75%;
-        font-size: 2.5vw;
+        border-radius: 5px;
+        padding: 1.5vw;
+        font-size: 1.5vw;
     `}
 
     ${customMedia.lessThan('minmobile')`
         top: 70%;
-        left: 70%;
-        font-size: 2.5vw;
+        font-size: 1vw;
     `}
 `
 
@@ -138,7 +159,7 @@ class Contact_me extends React.Component {
                             <Contact_email_phone>email : slio_7@naver.com</Contact_email_phone>
                             <Contact_email_phone>phone : 010-9582-9596</Contact_email_phone>
                         </Contact_detail>
-                        <Send_mail>Send-mail</Send_mail>
+                        <a href="mailto:slio_7@naver.com"><Send_mail>Send-mail</Send_mail></a>
                     </Contact_content>
                 </Contact_body>
             </Contactdisplay>
