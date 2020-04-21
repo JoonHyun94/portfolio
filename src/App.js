@@ -120,7 +120,7 @@ class App extends Component {
         {/* 첫 로딩 페이지 */}
         {mainLoading < 2 ?
         <Mainloading>
-          <CircularProgress className = {classes.progress} variant = "determinate" value={ completed } size = {'10vw'}/>
+          <CircularProgress className = { classes.progress } variant = "determinate" value={ completed } size = {'10vw'}/>
 
           <Motion style={{ opacity: spring(this.state.loadingText) }}>
                 {

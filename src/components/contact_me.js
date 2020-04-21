@@ -111,10 +111,10 @@ const Send_mail = styled.button`
     right: 5%;
     cursor: pointer;
     width: auto;
-    height: fit-content;
+    height: auto;
     border: none;
     border-radius: 8px;
-    padding: 1vw;
+    padding: 0.7vw;
     background-color: #F5DA81;
     white-space: pre;
     font-family: JejuGothic, NanumGothic;

@@ -1,6 +1,7 @@
 import React from 'react';
 import profile from '../images/JoonHyun.jpg';
 import styled from 'styled-components';
+import CircularProgress from '@material-ui/core/CircularProgress'
 import { generateMedia } from 'styled-media-query';
 
 // 반응형 웹
@@ -11,14 +12,14 @@ const customMedia = generateMedia({
 
 const Me = styled.div`
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
     ${customMedia.lessThan('maxmobile')`
         flex-wrap: wrap;
-        width: 100%;
-        height: auto;
     `}
 `
 const Index = styled.div`
-    float: left;
     height: fit-content;
     white-space: pre-line;
     margin-top: 1.5vw;
@@ -26,124 +27,90 @@ const Index = styled.div`
     font-family: JejuGothic, NanumGothic;
     font-size: 1.2vw;
     font-weight: 900;
-`
-const Infome = styled.div`
-    width: fit-content;
-    text-align: center;
-    margin-right: 5vw;
-    margin-top: 5vw;
-    margin-bottom: 5vw;
     ${customMedia.lessThan('maxmobile')`
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 auto;
-        margin-top: 2vw;
         width: 100%;
-        height: auto;
-        text-align: justify;
-    `}
-    ${customMedia.lessThan('minmobile')`
-        display: flex;
-        flex-direction: column;
-        margin-left: 0;
     `}
 `
 const Img = styled.div`
+    background: radial-gradient(
+        rgba(255, 255, 255, 0) 55%, 
+        rgba(255, 255, 255, 0.3) 60%, 
+        rgba(255, 255, 255, 0.4) 61%, 
+        rgba(255, 255, 255, 0.5) 62%, 
+        rgba(255, 255, 255, 0.6) 63%, 
+        rgba(255, 255, 255, 0.7) 64%, 
+        rgba(255, 255, 255, 0.8) 65%, 
+        rgba(255, 255, 255, 0.9) 66%, 
+        rgba(255, 255, 255, 1) 70%, 
+        rgba(255, 255, 255, 1) 100%
+    ), url(${ profile });
+    background-size: 100%;
     margin: 0 auto;
+    margin-top: 5vw;
     margin-bottom: 3vw;
+    margin-left: 5vw;
+    margin-right: 8vw;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 50%;
-    width: 50%;
-    height: 50%;
+    width: 15%;
+    height: 20vw;
     ${customMedia.lessThan('maxmobile')`
-        margin-right: 2vw;
-        margin-left: 5vw;
-        width: 25%;
-        height: auto;
-    `}
-    ${customMedia.lessThan('minmobile')`
         margin: 0 auto;
+        margin-top: 5vw;
+        margin-bottom: 3vw;
         width: 30%;
+        height: 40vw;
         text-align: center;
     `}
 `
-const Photo = styled.img`
-    width: 100%;
-    height: auto;
-`
-const Info_me_child = styled.div`
-    ${customMedia.lessThan('minmobile')`
-        margin: 0 auto;
-    `}
-`
-const Name = styled.div`
-    text-align:center;
-    margin-bottom: 5vw;
-    white-space: pre;
-    font-family: JejuGothic, NanumGothic;
-    font-size: 1.5vw;
+const About = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2vw;
+    margin-bottom: 7vw;
+    width: 65%;
     ${customMedia.lessThan('maxmobile')`
-        white-space: pre-line;
-        text-align: justify;
-        margin-top: 8vw;
-        font-size: 4vw;
-    `}
-    ${customMedia.lessThan('minmobile')`
-        text-align: center;
+        display: flex;
+        flex-direction: row;
+        margin-top: 0;
+        width: 100%;
     `}
 `
-const Info = styled.div`
-    text-align:center;
-    white-space: pre;
-    font-family: JejuGothic, NanumGothic;
-    font-size: 1vw;
-    ${customMedia.lessThan('maxmobile')`
-        white-space: pre-line;
-        text-align: justify;
-        width: fit-content;
-        margin-top: 10vw;
-        font-size: 2.5vw;
-    `}
-    ${customMedia.lessThan('minmobile')`
-        text-align: center;
-        margin-bottom: 5vw;
-    `}
-`
-const About_me = styled.div`
-    position: relative;
+const Profile = styled.div`
+    margin-top: 3vw;
+    margin-bottom: 3vw;
     margin-right: 5vw;
     width: 100%;
     ${customMedia.lessThan('maxmobile')`
-        position: unset;
         margin: 0 auto;
         margin-top: 5vw;
         width: 80%;
-        left: 50%;
         height: auto;
         margin-bottom: 5vw;
     `}
 `
-const About_title = styled.div`
-    position: absolute;
-    width: auto;
-    top: 17%;
+const Title = styled.div`
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 1.5vw;
     font-family: JejuGothic, NanumGothic;
     font-size: 3vw;
     text-decoration: none;
     border-bottom: 0.15vw solid #FACC2E;
     padding-bottom:0.5vw;
     ${customMedia.lessThan('maxmobile')`
-        position: unset;
         font-size: 4vw;
         width: fit-content;
         margin: 0%;
     `}
 `
-const About_content = styled.div`
-    position: absolute;
+const About_me = styled(Profile)`
+`
+const Profile_title = styled(Title)`
+`
+const About_title = styled(Title)`
+`
+const Profile_content = styled.div`
     text-align: justify;
     width: auto;
     line-height: 2.2vw;
@@ -152,7 +119,6 @@ const About_content = styled.div`
     top: 32%;
     white-space: pre-line;
     ${customMedia.lessThan('maxmobile')`
-        position: unset;
         font-size: 3vw;
         line-height: 4vw;
         width: 100%;
@@ -160,38 +126,149 @@ const About_content = styled.div`
         margin-top: 3vw;
     `}
 `
+const About_content = styled(Profile_content)`
+`
+const Name = styled.h2`
+    margin: 0;
+    display: inline;
+`
+const Skill_body = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+`
+const Skill_div = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    width: fit-content;
+`
+const Skill = styled.div`
+    margin: 0 auto;
+    margin-bottom: 5vw;
+`
+const Skill_title = styled(About_title)`
+    margin: 0 auto;
+    margin-bottom: 4vw;
+`
+
+const Skills = styled.div`
+    margin: 0 auto;
+`
+const Skills_title = styled.h2`
+    margin: 0 auto;
+    margin-bottom: 1vw;
+    width: fit-content;
+`
 
 class Info_me extends React.Component {
+    state = {
+        HTML5: 0,
+        CSS3: 0,
+        JavaScript: 0,
+        NodeJS: 0,
+        ReactJS: 0
+    }
+    
+    componentDidMount() {
+        setInterval(this.progress, 20); // 0.02초마다 progress함수가 실행됨
+    }
+
+    // 애니메이션 함수
+    progress = () => {
+        const { HTML5, CSS3, JavaScript, NodeJS, ReactJS } = this.state;
+        this.setState(
+            { HTML5: HTML5 >= 60 ? 60 : HTML5 + 1,
+             CSS3: CSS3 >= 50 ? 50 : CSS3 + 1,
+             JavaScript: JavaScript >= 70 ? 70 : JavaScript + 1,
+             NodeJS: NodeJS >= 30 ? 30 : NodeJS + 1,
+             ReactJS: ReactJS >= 20 ? 20 : ReactJS + 1 }
+        )
+    }
+
     render() {
+        const { classes } = this.props;
+        const { HTML5, CSS3, JavaScript, NodeJS, ReactJS } = this.state;
         return (
             <Me id = "Me">
                 <Index>SHIN <br></br> ; <br></br> PORT <br></br> FOLIO</Index>
 
-                <Infome>
-                    <Img><Photo src = { profile } alt = "profile"/></Img>
-                    <Info_me_child>
-                        <Name><b>신준현(Shin Joon Hyun)</b></Name>
-                        <Info>
-                            한신대학교 e-비즈니스학 학사<br></br><br></br>
-                            &lt; KH 정보교육원 &gt; 자바(JAVA) 프레임워크 개발자 양성과정
-                        </Info>
-                    </Info_me_child>
-                </Infome>
+                <Img></Img>
 
-                <About_me>
-                    <About_title>About Me</About_title>
-                    <About_content>
-                        어릴때 부터 호기심이 많은 성격에 만들어 보았던 간단한 계산기 프로그램으로 무언가를 
-                        만드는 것의 재미를 느끼게 되었고 그때부터 개발자를 꿈꾸게 되었습니다. 
-                        그래서 대학교에서 동아리활동을 통해 자연스럽게 많은것을 개발하게 될 수 있었습니다.
-                        그 중 Javascript가 가지고 있는 가능성과 다양성에 매력을 느끼게 되어
-                        웹 어플리케이션 개발자가 되기 위해 많은 노력을 하고 있습니다.<p></p>
-                        저는 제 목표를 '잘하는' 개발자로 삼아서 더 공부하고 있습니다. 
-                        경력을 쌓은 개발자는 경력만 쌓이면 자연스럽게 되지만 
-                        '잘하는'개발자는 경력뿐만 아니라 매일 공부하여 개발자로써 더 높은 곳을 바라보고 있기 때문입니다. 
-                        저는 계속 공부하여 '잘하는'개발자로써 남고 싶습니다.
-                    </About_content>
-                </About_me>
+                <About>
+                    {/* profile */}
+                    <Profile>
+                        <Profile_title>Profile</Profile_title>
+                        <Profile_content>
+                            <Name>신준현 Shin Joon Hyun</Name>&emsp;1994.09.19<p></p>
+                            한신대학교 e-비즈니스학 학사<br></br>
+                            &lt; KH 정보교육원 &gt; JAVA 프레임워크 개발자 양성과정 수료<p></p>
+                            <b>#ETC</b><br></br>
+                            정보처리기사
+                        </Profile_content>
+                    </Profile>
+                    
+                    {/* about_me */}
+                    <About_me>
+                        <About_title>About Me</About_title>
+                        <About_content>
+                            대학교3학년 새로운 학과환경 속에서 아두이노를 통해 코딩을 처음 접하게 되었습니다. 
+                            제가 직접 프로그래밍하여 결과물을 만들어 내는것에 재미를 느끼게 되었고 
+                            대학교 동아리 활동을 통해 학과 전시회에 직접 참여하여 기본적인 코딩실력을 길러왔습니다.
+                            이후 웹 프로그래밍 수업을 통해 Java와 JavaScript라는 언어를 접하여 
+                            웹 개발에 대해 흥미를 느끼게 되었고 웹 개발자의 꿈을 가지게 되었습니다. <p></p>
+                            졸업 후 개발자의 꿈에 더 다가가기 위하여 국비지원 학원을 선택하게 되었고 직접 프로젝트에
+                            참여하여 웹 개발에 대한 지식을 늘려갔습니다.
+                            현재는 제가 가진 프로젝트를 관리하기 위하여 리액트 독학하여 정적인 포트폴리오 사이트를
+                            개발하고 있습니다. 앞으로 front-end와 back-end가리지 않고 모든 부분을 담당할 수 있는
+                            개발자를 목표로 꾸준히 공부하여 회사와 같이 성장할 수 있는 사원이 되겠습니다.
+                        </About_content>
+                    </About_me>
+                </About>
+
+                <Skill>
+                    <Skill_title>Skill</Skill_title>
+
+                    <Skill_body>
+                        <Skill_div>
+                            <Skills_title>HTML5</Skills_title>
+                            <Skills>
+                                <CircularProgress className = { classes } variant = "determinate" value={ HTML5 } size = {'10vw'}/>
+                            </Skills>
+                        </Skill_div>
+
+                        <Skill_div>
+                            <Skills_title>CSS3</Skills_title>
+                            <Skills>
+                                <CircularProgress className = { classes } variant = "determinate" value={ CSS3 } size = {'10vw'}/>
+                            </Skills>
+                        </Skill_div>
+
+                        <Skill_div>
+                            <Skills_title>JavaScript</Skills_title>
+                            <Skills>
+                                <CircularProgress className = { classes } variant = "determinate" value={ JavaScript } size = {'10vw'}/>
+                            </Skills>
+                        </Skill_div>
+
+                        <Skill_div>
+                            <Skills_title>NodeJS</Skills_title>
+                            <Skills>
+                                <CircularProgress className = { classes } variant = "determinate" value={ NodeJS } size = {'10vw'}/>
+                            </Skills>
+                        </Skill_div>
+
+                        <Skill_div>
+                            <Skills_title>ReactJS</Skills_title>
+                            <Skills>
+                                <CircularProgress className = { classes } variant = "determinate" value={ ReactJS } size = {'10vw'}/>
+                            </Skills>
+                        </Skill_div>
+                    </Skill_body>
+
+                </Skill>
             </Me>
         )
     }
