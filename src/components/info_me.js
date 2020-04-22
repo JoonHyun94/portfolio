@@ -46,7 +46,7 @@ const Img = styled.div`
     ), url(${ profile });
     background-size: 100%;
     margin: 0 auto;
-    margin-top: 5vw;
+    margin-top: 7vw;
     margin-bottom: 3vw;
     margin-left: 5vw;
     margin-right: 8vw;
@@ -66,8 +66,7 @@ const Img = styled.div`
 const About = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin-top: 2vw;
-    margin-bottom: 7vw;
+    margin-top: 6vw;
     width: 65%;
     ${customMedia.lessThan('maxmobile')`
         display: flex;
@@ -132,39 +131,73 @@ const Name = styled.h2`
     margin: 0;
     display: inline;
 `
+const Skill = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 6vw;
+    padding-top: 6vw;
+    ${customMedia.lessThan('maxmobile')`
+        width: 80%;
+    `}
+`
+const Skill_title = styled(Title)`
+    margin: 0 auto;
+    margin-bottom: 4vw;
+    ${customMedia.lessThan('maxmobile')`
+        margin: 0 auto;
+        margin-bottom: 4vw;
+        font-size: 4vw;
+        width: fit-content;
+    `}
+`
 const Skill_body = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: fit-content;
+    ${customMedia.lessThan('maxmobile')`
+        margin: 0 auto;
+    `}
 `
-const Skill_div = styled.div`
+const Skills = styled.div`
     display: flex;
     flex-direction: column;
+    position: relative;
     margin: 0 auto;
-    margin-left: 3vw;
-    margin-right: 3vw;
+    margin-left: 4vw;
+    margin-right: 4vw;
     width: fit-content;
+    align-items: center;
+    justify-content: center;
+    ${customMedia.lessThan('maxmobile')`
+        margin-left: 3.4vw;
+        margin-right: 3.4vw;
+    `}
+    ${customMedia.lessThan('maxmobile')`
+        margin-left: 2.5vw;
+        margin-right: 2.5vw;
+    `}
 `
-const Skill = styled.div`
+const Skills_title = styled.div`
     margin: 0 auto;
-    margin-bottom: 5vw;
-`
-const Skill_title = styled(About_title)`
-    margin: 0 auto;
-    margin-bottom: 4vw;
-`
-
-const Skills = styled.div`
-    margin: 0 auto;
-`
-const Skills_title = styled.h2`
-    margin: 0 auto;
-    margin-bottom: 1vw;
+    margin-bottom: 2.5vw;
     width: fit-content;
+    font-family: JejuGothic, NanumGothic;
+    font-size: 2vw;
+`
+const Skills_content = styled.div`
+    position: absolute;
+    margin: 0 auto;
+    font-family: JejuGothic, NanumGothic;
+    font-size: 1.5vw;
+    top: 60%;
+    left: 50%;
+    transform:translateX(-50%);
 `
 
 class Info_me extends React.Component {
     state = {
+        scrollTop: 0,
         HTML5: 0,
         CSS3: 0,
         JavaScript: 0,
@@ -173,19 +206,31 @@ class Info_me extends React.Component {
     }
     
     componentDidMount() {
+        window.addEventListener('scroll', this.onScroll);
         setInterval(this.progress, 20); // 0.02초마다 progress함수가 실행됨
+    }
+
+    onScroll = (e) => {
+        const { scrollTop } = this.state;
+        this.scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop);
+        this.setState({ scrollTop: this.scrollTop });
     }
 
     // 애니메이션 함수
     progress = () => {
         const { HTML5, CSS3, JavaScript, NodeJS, ReactJS } = this.state;
-        this.setState(
-            { HTML5: HTML5 >= 60 ? 60 : HTML5 + 1,
-             CSS3: CSS3 >= 50 ? 50 : CSS3 + 1,
-             JavaScript: JavaScript >= 70 ? 70 : JavaScript + 1,
-             NodeJS: NodeJS >= 30 ? 30 : NodeJS + 1,
-             ReactJS: ReactJS >= 20 ? 20 : ReactJS + 1 }
-        )
+        const skillHeight = document.querySelector("#Skill").offsetHeight;
+        const skillTop = document.querySelector("#Skill").offsetTop;
+
+        if(skillTop - skillHeight < this.scrollTop) {
+            this.setState(
+                { HTML5: HTML5 >= 80 ? 80 : HTML5 + 1,
+                CSS3: CSS3 >= 50 ? 50 : CSS3 + 1,
+                JavaScript: JavaScript >= 70 ? 70 : JavaScript + 1,
+                NodeJS: NodeJS >= 30 ? 30 : NodeJS + 1,
+                ReactJS: ReactJS >= 20 ? 20 : ReactJS + 1 }
+            )
+        }
     }
 
     render() {
@@ -228,44 +273,39 @@ class Info_me extends React.Component {
                     </About_me>
                 </About>
 
-                <Skill>
+                <Skill id = "Skill">
                     <Skill_title>Skill</Skill_title>
 
                     <Skill_body>
-                        <Skill_div>
+                        <Skills>
                             <Skills_title>HTML5</Skills_title>
-                            <Skills>
-                                <CircularProgress className = { classes } variant = "determinate" value={ HTML5 } size = {'10vw'}/>
-                            </Skills>
-                        </Skill_div>
+                            <Skills_content>{ Math.floor(HTML5) }%</Skills_content>
+                            <CircularProgress className = { classes } variant = "static" value = { HTML5 } color = "secondary" size = { '10vw' }/>
+                        </Skills>
 
-                        <Skill_div>
+                        <Skills>
                             <Skills_title>CSS3</Skills_title>
-                            <Skills>
-                                <CircularProgress className = { classes } variant = "determinate" value={ CSS3 } size = {'10vw'}/>
-                            </Skills>
-                        </Skill_div>
+                            <Skills_content>{ Math.floor(CSS3) }%</Skills_content>
+                            <CircularProgress className = { classes } variant = "static" value = { CSS3 } color = "secondary" size = { '10vw' }/>
+                        </Skills>
 
-                        <Skill_div>
+                        <Skills>
                             <Skills_title>JavaScript</Skills_title>
-                            <Skills>
-                                <CircularProgress className = { classes } variant = "determinate" value={ JavaScript } size = {'10vw'}/>
-                            </Skills>
-                        </Skill_div>
+                            <Skills_content>{ Math.floor(JavaScript) }%</Skills_content>
+                            <CircularProgress className = { classes } variant = "static" value = { JavaScript } color = "secondary" size = { '10vw' }/>
+                        </Skills>
 
-                        <Skill_div>
+                        <Skills>
                             <Skills_title>NodeJS</Skills_title>
-                            <Skills>
-                                <CircularProgress className = { classes } variant = "determinate" value={ NodeJS } size = {'10vw'}/>
-                            </Skills>
-                        </Skill_div>
+                            <Skills_content>{ Math.floor(NodeJS) }%</Skills_content>
+                            <CircularProgress className = { classes } variant = "static" value = { NodeJS } color = "secondary" size = { '10vw' }/>
+                        </Skills>
 
-                        <Skill_div>
+                        <Skills>
                             <Skills_title>ReactJS</Skills_title>
-                            <Skills>
-                                <CircularProgress className = { classes } variant = "determinate" value={ ReactJS } size = {'10vw'}/>
-                            </Skills>
-                        </Skill_div>
+                            <Skills_content>{ Math.floor(ReactJS) }%</Skills_content>
+                            <CircularProgress className = { classes } variant = "static" value = { ReactJS } color = "secondary" size = { '10vw' }/>
+                        </Skills>
                     </Skill_body>
 
                 </Skill>

@@ -207,6 +207,7 @@ class Header extends React.Component {
                             <Close onClick={ this.closeMenu }/>
                             <Menuli><Anchor onClick = { () => this.scrollToParam('#Maindisplay') }>Home</Anchor></Menuli>
                             <Menuli><Anchor onClick = { () => this.scrollToParam('#Me') }>About</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToParam('#Skill') }>Skill</Anchor></Menuli>
                             <Menuli><Anchor onClick = { () => this.scrollToParam('#Projectdisplay') }>Project</Anchor></Menuli>
                             <Menuli><Anchor onClick = { () => this.scrollToParam('#Contactdisplay') }>Contact</Anchor></Menuli>
                         </Menu>
@@ -216,6 +217,7 @@ class Header extends React.Component {
                             <Open onClick={ this.openMenu }/>
                             <Menuli><Anchor onClick = { () => this.scrollToParam('#Maindisplay') }>Home</Anchor></Menuli>
                             <Menuli><Anchor onClick = { () => this.scrollToParam('#Me') }>About</Anchor></Menuli>
+                            <Menuli><Anchor onClick = { () => this.scrollToParam('#Skill') }>Skill</Anchor></Menuli>
                             <Menuli><Anchor onClick = { () => this.scrollToParam('#Projectdisplay') }>Project</Anchor></Menuli>
                             <Menuli><Anchor onClick = { () => this.scrollToParam('#Contactdisplay') }>Contact</Anchor></Menuli>
                         </Menu>
