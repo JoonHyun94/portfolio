@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom'
 import profile from '../images/JoonHyun.jpg';
 import styled from 'styled-components';
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -210,25 +211,25 @@ class Info_me extends React.Component {
         setInterval(this.progress, 20); // 0.02초마다 progress함수가 실행됨
     }
 
-    onScroll = (e) => {
-        const { scrollTop } = this.state;
-        this.scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop);
-        this.setState({ scrollTop: this.scrollTop });
+    onScroll = () => {
+        const moveScroll = (window.scrollY || document.documentElement.scrollTop); // 크로스 브라우징(IE)
+        this.setState({ scrollTop: moveScroll });
     }
 
     // 애니메이션 함수
     progress = () => {
-        const { HTML5, CSS3, JavaScript, NodeJS, ReactJS } = this.state;
-        const skillHeight = document.querySelector("#Skill").offsetHeight;
-        const skillTop = document.querySelector("#Skill").offsetTop;
+        const { scrollTop, HTML5, CSS3, JavaScript, NodeJS, ReactJS } = this.state;
+        const skillHeight = document.querySelector("#Skill").offsetHeight; // skill element height(높이)
+        const skillTop = document.querySelector("#Skill").offsetTop; // skill element top(최상단 과의 거리)
+        const windowHeight = window.innerHeight; // viewport 높이
 
-        if(skillTop - skillHeight < this.scrollTop) {
+        if(scrollTop + windowHeight >= skillTop + skillHeight) {
             this.setState(
-                { HTML5: HTML5 >= 80 ? 80 : HTML5 + 1,
-                CSS3: CSS3 >= 50 ? 50 : CSS3 + 1,
-                JavaScript: JavaScript >= 70 ? 70 : JavaScript + 1,
-                NodeJS: NodeJS >= 30 ? 30 : NodeJS + 1,
-                ReactJS: ReactJS >= 20 ? 20 : ReactJS + 1 }
+                { HTML5: HTML5 >= 80 ? 80 : HTML5 + 10,
+                CSS3: CSS3 >= 50 ? 50 : CSS3 + 10,
+                JavaScript: JavaScript >= 70 ? 70 : JavaScript + 10,
+                NodeJS: NodeJS >= 30 ? 30 : NodeJS + 10,
+                ReactJS: ReactJS >= 20 ? 20 : ReactJS + 10 }
             )
         }
     }
