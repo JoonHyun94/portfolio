@@ -104,20 +104,23 @@ class Main extends React.Component {
       width: 740,
       zIndex: 9999,
       opacity: 0,
-      paddingTop: 100
+      paddingTop: 100,
+      widthInterval: 0,
+      titleInterval: 0
     }
 
     mainWidth = () => {
-      setInterval(this.animateMainWidth, 10);
+      this.widthInterval = setInterval(this.animateMainWidth, 10);
     }
 
     mainInterval = () => {
-      setInterval(this.animateMainTitle, 20);
+      this.titleInterval = setInterval(this.animateMainTitle, 20);
     }
 
     animateMainWidth = () => {
       const { width, zIndex } = this.state;
       if(width === 0) {
+        clearInterval(this.widthInterval);
         this.setState({ zIndex: zIndex === 9999 ? -1 : "" });
         this.mainInterval();
       }
@@ -129,10 +132,12 @@ class Main extends React.Component {
       if(opacity < 1.0 || paddingTop > 0) {
         this.setState(
           { 
-            opacity: opacity === 1.0 ? 1.0 : opacity + 0.003,
-            paddingTop: paddingTop === 0 ? 0 : paddingTop - 0.3
+            opacity: opacity === 1.0 ? 1.0 : opacity + 0.03,
+            paddingTop: paddingTop === 0 ? 0 : paddingTop - 3
           }
         )
+      } else {
+        clearInterval(this.titleInterval);
       }
     }
 

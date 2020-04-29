@@ -141,7 +141,7 @@ class Header extends React.Component {
     scrollToParam (param_id) {
         var location = document.querySelector(param_id).offsetTop;
         if(param_id === "#Skill") {
-            location =  (location - window.innerHeight) + (document.querySelector(param_id).offsetHeight * 2);
+            location =  (location - window.innerHeight) + (document.querySelector(param_id).offsetHeight * 1.1);
         }
         scroll.scrollTo(location); // react-scroll
     }

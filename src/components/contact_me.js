@@ -12,7 +12,7 @@ const Contactdisplay = styled.div`
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    background-color: #F2F2F2;
+    background-color: #F5F5F5;
     height: auto;
 `
 const Index = styled.div`
@@ -25,9 +25,6 @@ const Index = styled.div`
     font-size: 1.2vw;
     font-weight: 900;
 `
-const Contact_h1 = styled.h1`
-    margin: 0 auto;
-`
 const Contact_title = styled.div`
     position: absolute;
     margin: 0 auto;
@@ -39,7 +36,7 @@ const Contact_title = styled.div`
     border-bottom: 0.15vw solid #FACC2E;
     padding-bottom:0.5vw;
     font-family: JejuGothic, NanumGothic;
-    font-size: 1.5vw;
+    font-size: 2vw;
 
     ${customMedia.lessThan('maxmobile')`
         font-size: 3vw;
@@ -73,7 +70,7 @@ const Contact_content = styled.div`
     
     ${customMedia.lessThan('maxmobile')`
         margin-bottom: 5vw;
-        width: 70%;
+        width: 60%;
         height: auto;
     `}
 `
@@ -85,30 +82,33 @@ const Contact_detail = styled.div`
 `
 const Contact_name = styled.h1`
     font-family: JejuGothic, NanumGothic;
-    font-size: 2.5vw;
+    font-size: 1.5vw;
     margin-bottom: 4vw;
+    margin-left: 2vw;
         
     ${customMedia.lessThan('maxmobile')`
         font-family: JejuGothic, NanumGothic;
-        font-size: 4vw;
+        font-size: 2vw;
         margin-bottom: 6vw;
     `}
 `
 const Contact_email_phone = styled.div`
     font-family: JejuGothic, NanumGothic;
-    font-size: 1.5vw;
+    font-color: black;
+    font-size: 0.9vw;
     line-height: 3vw;
+    margin-left: 2vw;
     
     ${customMedia.lessThan('maxmobile')`
         font-family: JejuGothic, NanumGothic;
-        font-size: 3vw;
+        font-size: 1.5vw;
         line-height: 4vw;
     `}
 `
 const Send_mail = styled.button`
     position: absolute;
     top: 75%;
-    right: 5%;
+    right: 8%;
     cursor: pointer;
     width: auto;
     height: auto;
@@ -123,24 +123,25 @@ const Send_mail = styled.button`
     &:hover {
         color: #fff;
 
-        // box-shadow:  x-positon(가로) +-100px로 양옆으로 그림자생성, 
+        // box-shadow:  x-positon(가로) +-150px로 양옆으로 그림자생성, 
         //              y-position(세로) 0,
         //              blur(흐림) 0, 
         //              spread(그림자 확장) 0, 
         //              color(색상) rgba로 투명도 적용, 
         //              inset 안쪽에만 적용
-        box-shadow: 100px 0 0 0 rgba(0,0,0,0.25) inset, 
-                    -100px 0 0 0 rgba(0,0,0,0.25) inset;
+        box-shadow: 150px 0 0 0 rgba(0,0,0,0.25) inset, 
+                    -150px 0 0 0 rgba(0,0,0,0.25) inset;
     }
 
     ${customMedia.lessThan('maxmobile')`
+        top: 60%;
         border-radius: 5px;
         padding: 1.5vw;
         font-size: 1.5vw;
     `}
 
     ${customMedia.lessThan('minmobile')`
-        top: 70%;
+        top: 60%;
         font-size: 1vw;
     `}
 `
@@ -150,16 +151,16 @@ class Contact_me extends React.Component {
         return (
             <Contactdisplay id = "Contactdisplay">
                 <Index>SHIN <br></br> ; <br></br> PORT <br></br> FOLIO</Index>
-                <Contact_title><Contact_h1>Contact Me</Contact_h1></Contact_title>
+                <Contact_title>Contact Me</Contact_title>
                 
                 <Contact_body>
                     <Contact_content>
                         <Contact_detail>
                             <Contact_name>신준현(ShinJoonHyun)</Contact_name>
                             <Contact_email_phone>email : slio_7@naver.com</Contact_email_phone>
-                            <Contact_email_phone>phone : 010-9582-9596</Contact_email_phone>
+                            <Contact_email_phone>phone : <a href = "tel:010-9582-9596" style = {{ color: 'black' }}>010-9582-9596</a></Contact_email_phone>
                         </Contact_detail>
-                        <a href="mailto:slio_7@naver.com"><Send_mail>Send-mail</Send_mail></a>
+                        <a href = "mailto:slio_7@naver.com"><Send_mail>Send-mail</Send_mail></a>
                     </Contact_content>
                 </Contact_body>
             </Contactdisplay>
