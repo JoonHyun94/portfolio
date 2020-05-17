@@ -3,6 +3,7 @@ import kh_project_img from '../images/kh_project_img.jpg';
 import pf_project_img from '../images/pf_project_img.png'
 import git_img from '../images/github.png';
 import styled from 'styled-components';
+import Khdetail from "./kh_project";
 import { generateMedia } from 'styled-media-query';
 
 // 반응형 웹
@@ -333,9 +334,18 @@ const Right = styled.div`
         }
     `}
 `
+const Project_popup = styled.a`
+    cursor: pointer;
+    margin: 0 auto;
+    margin-bottom: 2vw;
+    font-family: JejuGothic, NanumGothic;
+    font-size: 1.5vw;
+`
 
 class Project extends React.Component {
-
+    state = {
+        modalOpen: false
+    }
     // project 가로 스크롤
     // scrollLeft, Right(element: scroll, 변경할 값: 엘리먼트width, 종료시점: 10)
     scrollToLeft () {
@@ -372,6 +382,22 @@ class Project extends React.Component {
             return -change / 2 * ( currentTime * ( currentTime - 2 ) - 1 ) + start;
     };
 
+    goBack (changeText) {
+        if(changeText === 'Project 상세보기') {
+            this.setState({ text: 'Project 닫기' });
+        } else {
+            this.props.history.go(-1);
+            this.setState({ text: 'Project 상세보기' });
+        }
+    }
+    
+    openModal = () => {
+        this.setState({ modalOpen: true });
+    }
+    closeModal = () => {
+        this.setState({ modalOpen: false });
+    }
+
     render() {
         return (
              <Projectdisplay id = "Projectdisplay">
@@ -379,7 +405,7 @@ class Project extends React.Component {
                 <Project_title>Project</Project_title>
 
                 <Scroll_body id = "scroll">
-                    { project_array.map(p => { 
+                    { project_array.map(p => {
                         return <Project_body key = { p.key }>
                             <Project_detail>
                                 <Project_detail_title>{ p.project_detail_title }</Project_detail_title>
@@ -406,6 +432,13 @@ class Project extends React.Component {
                                     </Git_link>
                                 </Git>
 
+                                { p.key === 1 ?
+                                    <React.Fragment>
+                                        <Project_popup onClick = { () => this.openModal() }>Project 상세보기</Project_popup>
+                                        <Khdetail modalOpen = { this.state.modalOpen } modalClose = { this.closeModal }/>
+                                    </React.Fragment>
+                                    : ""
+                                }
                             </Project_detail>
                         </Project_body>
                     })}
@@ -442,7 +475,7 @@ const project_array =  [
             '#Ajax',
             '#Oracle'
         ],
-        git_source: 'https://github.com/JoonHyun94/Final'
+        git_source: 'https://github.com/yjayo0124/Final'
     },
     {
       key: 2,
@@ -460,10 +493,9 @@ const project_array =  [
                         `,
       skills: [
           '#React',
-          '#Node.js',
-          '#Component-style',
-          '#React-Motion',
-          '#React-scroll',
+          '#JavaScript',
+          '#HTML',
+          '#CSS',
           '#styled-media-query'
       ],
       git_source: 'https://github.com/JoonHyun94/portfolio'
