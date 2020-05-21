@@ -12,7 +12,7 @@ import { generateMedia } from 'styled-media-query';
 
 // 반응형 웹
 const customMedia = generateMedia({
-    maxmobile: '575px',
+    maxmobile: '700px',
     minmobile: '352px',
 });
 
@@ -23,6 +23,14 @@ const opacityTransition = keyframes`
 const widthTransition = keyframes`
     from { width: 0%; height: 0%; }
     to { width: 70%; height: 90%; }
+`
+const imgTransition = keyframes`
+    from { width: 50%; }
+    to { width: 80%; }
+`
+const reducImg = keyframes`
+    from { width: 80%; }
+    to { width: 50%; }
 `
 
 var ModalOverlay = styled.div`
@@ -80,12 +88,18 @@ const Symbol = styled.div`
     align-self: flex-end;
     color: #FACC2E;
     font-size: 1.9vw;
+    ${customMedia.lessThan('maxmobile')`
+        font-size: 3vw;
+    `}
 `
 const Number = styled.div`
     margin-top: 2vw;
     font-family: JejuGothic, NanumGothic;
     color: #FACC2E;
     font-size: 3vw;
+    ${customMedia.lessThan('maxmobile')`
+        font-size: 4.1vw;
+    `}
 `
 const Title = styled.div`
     margin: 0 auto;
@@ -94,15 +108,23 @@ const Title = styled.div`
     font-family: JejuGothic, NanumGothic;
     font-weight: 500;
     font-size: 1.2vw;
+    ${customMedia.lessThan('maxmobile')`
+        font-size: 2.3vw;
+    `}
 `
-const Img_div = styled.div`
+var Img_div = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     width: 50%;
+    transition: width 0.3s;
+    ${customMedia.lessThan('maxmobile')`
+        width: 60%;
+    `}
 `
 const Img = styled.img`
-    margin-bottom: 2vw;
+    cursor:pointer;
+    margin-bottom: 3vw;
     box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
     border-radius: 1vw;
     width: 100%;
@@ -115,10 +137,53 @@ const Content = styled.div`
     font-size: 0.9vw;
     align-items: center;
     line-height: 2vw;
+    ${customMedia.lessThan('maxmobile')`
+        width: 60%;
+        font-size: 1.2vw;
+    `}
 `
 const state = {
-    count: 0
+    count: 0,
+    imgExpand: true,
+    currentTag: null,
+    beforeTag: null,
+    imgPercent: null
 };
+
+const expand = (tagId) => {
+    state.currentTag = document.querySelector("[id = " + tagId + "]");
+    if(document.body.offsetWidth > 700) {
+        state.imgPercent = 50;
+    }
+
+    if(document.body.offsetWidth < 700) {
+        state.imgPercent = 60;
+    }
+
+    if(state.beforeTag === null) {
+        state.beforeTag = document.querySelector("[id = " + tagId + "]");
+    }
+    if(state.currentTag === state.beforeTag) {
+        if(state.imgExpand === true) {
+            state.currentTag.style.width = "80%";
+            state.imgExpand = false;
+            state.beforeTag = document.querySelector("[id = " + tagId + "]");
+        } else if(state.imgExpand === false) {
+            state.currentTag.style.width = state.imgPercent + "%";
+            state.imgExpand = true;
+            state.beforeTag = document.querySelector("[id = " + tagId + "]")
+        }
+    } else if(state.currentTag != state.beforeTag) {
+        state.beforeTag.style.width = state.imgPercent + "%";
+        state.currentTag.style.width = "80%";
+        state.beforeTag = document.querySelector("[id = " + tagId + "]");
+        if(state.imgExpand === true) {
+            state.imgExpand = false;
+        } else if(state.imgExpand === false) {
+            state.imgExpand = true;
+        }
+    } 
+}
 
 const Kh_project = ({ modalOpen, modalClose }) => {
     if(state.count === 0) {
@@ -151,22 +216,25 @@ const Kh_project = ({ modalOpen, modalClose }) => {
         `
         state.count = 1;
     }
-
+    
     return (
         <React.Fragment>
             {modalOpen === true ?
                 <React.Fragment>
                     <ModalOverlay onClick = { modalClose }/>
-                    <Projectbody>
+                    <Projectbody id = "modal">
                         <CloseProject onClick = { modalClose }/>
 
                         <Projectdetail>
+                            <Title>#이미지 클릭 시 이미지 확대, 축소가 가능합니다.</Title><p></p>
                             <Title_div>
                                 <Number>01</Number><Symbol>/</Symbol>&nbsp;
                                 <Title>검색어 자동완성 기능</Title>
                             </Title_div>
-                            <Img_div>
+                            <Img_div id = "first"  onClick = {() => expand("first") }>
                                 <Img src = { kh_autocomplete }/>
+                            </Img_div>
+                            <Img_div id = "second"  onClick = {() => expand("second") }>
                                 <Img src = { kh_search }/>
                             </Img_div>
                             <Content>
@@ -181,7 +249,7 @@ const Kh_project = ({ modalOpen, modalClose }) => {
                                 <Number>02</Number><Symbol>/</Symbol>&nbsp;
                                 <Title>기업정보 게시판</Title>
                             </Title_div>
-                            <Img_div>
+                            <Img_div id = "third"  onClick = {() => expand("third") }>
                                 <Img src = { cor_info }/>
                             </Img_div>
                             <Title style = {{ marginTop: 0 }}>2019년 4월 기준 국민연금 데이터 이용</Title>
@@ -190,9 +258,10 @@ const Kh_project = ({ modalOpen, modalClose }) => {
                                     &emsp;((국민연금 * 11.1) / 인원 수) x 12<br></br>
                                 2) 해당기업의 간략한 정보<br></br>
                                 3) 해당기업의 인원, 업력, 입사율, 퇴사율 (2019년 4월 기준)<br></br>
-                                4) 스크립트 영역....(수정)
+                                4) 인원, 업력, 입사율, 퇴사율 div클릭 시 hide, show로 클릭한 정보로 바뀌며<br></br>
+                                    &emsp;jQuery의 animate함수를 사용하여 그래프가 동적으로 변환
                             </Content>
-                            <Img_div>
+                            <Img_div id = "four"  onClick = {() => expand("four") }>
                                 <Img src = { cor_info_2 }/>
                             </Img_div>
                             <Content>
@@ -209,7 +278,7 @@ const Kh_project = ({ modalOpen, modalClose }) => {
                                 <Number>03</Number><Symbol>/</Symbol>&nbsp;
                                 <Title>기업 리뷰게시판</Title>
                             </Title_div>
-                            <Img_div>
+                            <Img_div id = "five"  onClick = {() => expand("five") }>
                                 <Img src = { review }/>
                             </Img_div>
                             <Content>
@@ -226,7 +295,7 @@ const Kh_project = ({ modalOpen, modalClose }) => {
                                 <Number>04</Number><Symbol>/</Symbol>&nbsp;
                                 <Title>리뷰 상세페이지</Title>
                             </Title_div>
-                            <Img_div>
+                            <Img_div id = "six"  onClick = {() => expand("six") }>
                                 <Img src = { review_detail }/>
                             </Img_div>
                             <Content>
@@ -244,7 +313,7 @@ const Kh_project = ({ modalOpen, modalClose }) => {
                                 <Number>05</Number><Symbol>/</Symbol>&nbsp;
                                 <Title>리뷰 글쓰기(팝업)</Title>
                             </Title_div>
-                            <Img_div>
+                            <Img_div id = "seven"  onClick = {() => expand("seven") }>
                                 <Img src = { review_write }/>
                             </Img_div>
                             <Content>
@@ -261,7 +330,7 @@ const Kh_project = ({ modalOpen, modalClose }) => {
                                 <Number>06</Number><Symbol>/</Symbol>&nbsp;
                                 <Title>리뷰 수정페이지</Title>
                             </Title_div>
-                            <Img_div>
+                            <Img_div id = "eight"  onClick = {() => expand("eight") }>
                                 <Img src = { review_modify }/>
                             </Img_div>
                             <Content>
