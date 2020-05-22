@@ -42,8 +42,9 @@ const CloseProject = styled.div`
     cursor: pointer;
     top: 0.5vw;
     left: 93%;
-    margin-right: 0;
+    margin-top: 1vw;
     margin-bottom: 2vw;
+    margin-right: 0;
     width: 2.5vw;
     height: 2.5vw;
     border: solid black;

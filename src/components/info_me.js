@@ -224,7 +224,6 @@ class Info_me extends React.Component {
         JavaScript: 0, 
         HTML5: 0, 
         CSS3: 0, 
-        NodeJS: 0, 
         ReactJS: 0
     }
 
@@ -239,7 +238,7 @@ class Info_me extends React.Component {
     }
 
     progress = () => {
-        const { scrollTop, Java, HTML5, Oracle, CSS3, JavaScript, NodeJS, ReactJS } = this.state;
+        const { scrollTop, Java, HTML5, Oracle, CSS3, JavaScript, ReactJS } = this.state;
         const skillHeight = document.querySelector("#Skill").offsetHeight; // skill element height(높이)
         const skillTop = document.querySelector("#Skill").offsetTop; // skill element top(최상단 과의 거리)
         const windowHeight = window.innerHeight; // viewport 높이
@@ -251,7 +250,6 @@ class Info_me extends React.Component {
                 HTML5: HTML5 >= 70 ? 70 : HTML5 + 10,
                 CSS3: CSS3 >= 70 ? 70 : CSS3 + 10,
                 JavaScript: JavaScript >= 60 ? 60 : JavaScript + 10,
-                NodeJS: NodeJS >= 40 ? 40 : NodeJS + 10,
                 ReactJS: ReactJS >= 40 ? 40 : ReactJS + 10 }
             )
         }
@@ -259,7 +257,7 @@ class Info_me extends React.Component {
 
     render() {
         const { classes } = this.props;
-        const { Java, Oracle, HTML5, CSS3, JavaScript, NodeJS, ReactJS } = this.state;
+        const { Java, Oracle, HTML5, CSS3, JavaScript, ReactJS } = this.state;
         
         // skills_array
         const skills_array = [
@@ -290,11 +288,6 @@ class Info_me extends React.Component {
             },
             {
                 key: 6,
-                skills_title: 'NodeJS',
-                skills_content: NodeJS,
-            },
-            {
-                key: 7,
                 skills_title: 'ReactJS',
                 skills_content: ReactJS,
             }

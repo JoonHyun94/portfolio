@@ -1,6 +1,7 @@
 import React from 'react';
-import kh_project_img from '../images/kh_project_img.jpg';
+import kh_project_img from '../images/kh_project_img.png';
 import pf_project_img from '../images/pf_project_img.png'
+import mobile from '../images/mobile.png'
 import git_img from '../images/github.png';
 import styled from 'styled-components';
 import Khdetail from "./kh_project";
@@ -16,7 +17,7 @@ const Projectdisplay = styled.div`
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    background-color: #D5EBDE;
+    background-color: #d2e6f1;
     height: auto;
 `
 const Index = styled.div`
@@ -37,8 +38,8 @@ const Project_title = styled.div`
     left: 50%;
     transform:translateX(-50%);
     text-decoration: none;
-    border-bottom: 0.15vw solid #FACC2E;
-    padding-bottom:0.5vw;
+    border-bottom: 0.15vw solid #F5DA81;
+    padding-bottom: 0.5vw;
     font-family: JejuGothic, NanumGothic;
     font-size: 2vw;
 
@@ -102,7 +103,7 @@ const Project_detail = styled.div`
     flex-wrap: wrap;
     margin: 0 auto;
     margin-bottom: 2vw;
-    width: 60%;
+    width: 55%;
     height: auto;
 
     ${customMedia.lessThan('maxmobile')`
@@ -115,19 +116,23 @@ const Project_detail = styled.div`
 `
 const Project_img = styled.div`
     display: flex;
+    position: relative;
     margin-left: 2vw;
     align-items: center;
-    width: 35%;
+    width: 40%;
     height: auto;
     margin-right: 1vw;
+    bottom: ${ props => props.mobileImg ? '2vw' : ""};
     ${customMedia.lessThan('maxmobile')`
         margin: 0 auto;
         margin-bottom: 2vw;
         width: 80%;
         height: auto;
+        bottom: ${ props => props.mobileImg ? '-2vw' : ""};
     `}
 `
 const Img = styled.img`
+    filter: drop-shadow(10px 10px 10px black);
     border-radius: 1vw;
     width: 100%;
     height: auto;
@@ -137,21 +142,58 @@ const Project_content_title = styled.h1`
     width: 85%;
     font-family: JejuGothic, NanumGothic;
     font-size: 1.4vw;
+    &:before {
+        content: '';
+        display: block;
+        width: 10%;
+        opacity: 0.6;
+        border-radius: 3px;
+        border-top: 0.10vw solid black;
+        padding-top: 0.2vw;
 
+    }
+    &:after {
+        content: '';
+        display: block;
+        width: 10%;
+        opacity: 0.6;
+        border-radius: 3px;
+        border-bottom: 0.10vw solid black;
+        padding-bottom: 0.2vw;
+    }
     ${customMedia.lessThan('maxmobile')`
         margin-bottom: 1vw;
         width: 100%;
         font-family: JejuGothic, NanumGothic;
         font-size: 2.5vw;
+        &:before {
+            content: '';
+            display: block;
+            width: 10%;
+            opacity: 0.6;
+            border-radius: 3px;
+            border-top: 0.15vw solid black;
+            padding-top: 0.4vw;
+    
+        }
+        &:after {
+            content: '';
+            display: block;
+            width: 10%;
+            opacity: 0.6;
+            border-radius: 3px;
+            border-bottom: 0.15vw solid black;
+            padding-bottom: 0.4vw;
+        }
     `}
 `
 const Project_content = styled.div`
     margin-left: 1vw;
-    margin-right: 4vw;
+    margin-right: 3vw;
     display: flex;
     flex-direction: column;
     text-align: justify;
-    width: 50%;
+    width: 47%;
     height: auto;
 
     ${customMedia.lessThan('maxmobile')`
@@ -160,7 +202,7 @@ const Project_content = styled.div`
     `}
 `
 const Project_introduction = styled.div`
-    margin-bottom: 2vw;
+    margin-bottom: 0.7vw;
     white-space: pre-line;
     font-family: JejuGothic, NanumGothic;
     font-size: 0.8vw;
@@ -238,7 +280,7 @@ const Github = styled.img`
     height: auto;
             
     ${customMedia.lessThan('maxmobile')`
-        width: 5vw;
+        width: 4vw;
         height: auto;
     `}
 `
@@ -249,34 +291,36 @@ const Left = styled.div`
     &:before {
         content: '';
         position: absolute;
-        top: 47.3%;
-        left: 15vw;
-        height: 3vw;
+        top: 48%;
+        left: 20vw;
+        height: 2vw;
         border: solid black;
         border-radius: 15px;
-        border-width: 0.15vw 0.4vw 0.4vw 0.1vw;
+        border-width: 0.15vw 0.2vw 0.7vw 0.1vw;
         transform: rotate(45deg);
     }
     &:after {
         content: '';
         position: absolute;
-        top: 52%;
-        left: 15vw;
-        height: 3vw;
+        top: 51.6%;
+        left: 20vw;
+        height: 2vw;
         border: solid black;
         border-radius: 15px;
-        border-width: 0.15vw 0.4vw 0.4vw 0.1vw;
+        border-width: 0.15vw 0.2vw 0.7vw 0.1vw;
         transform: rotate(-45deg);
     }
 
     ${customMedia.lessThan('maxmobile')`
         &:before {
             top: 49%;
-            border-width: 0.15vw 0.5vw 0.5vw 0.2vw;
+            left: 15vw;
+            border-width: 0.15vw 0.2vw 1.5vw 0.2vw;
         }
         &:after {
-            top: 50.7%;
-            border-width: 0.15vw 0.5vw 0.5vw 0.2vw;
+            top: 50.8%;
+            left: 15vw;
+            border-width: 0.15vw 0.2vw 1.5vw 0.2vw;
         }
     `}
     ${customMedia.lessThan('408px')`
@@ -295,34 +339,36 @@ const Right = styled.div`
     &:before {
         content: '';
         position: absolute;
-        top: 47.3%;
-        right: 15vw;
-        height: 3vw;
+        top: 48%;
+        right: 20vw;
+        height: 2vw;
         border: solid black;
         border-radius: 15px;
-        border-width: 0.15vw 0.4vw 0.4vw 0.1vw;
+        border-width: 0.15vw 0.2vw 0.7vw 0.1vw;
         transform: rotate(-45deg);
     }
     &:after {
         content: '';
         position: absolute;
-        top: 52%;
-        right: 15vw;
-        height: 3vw;
+        top: 51.6%;
+        right: 20vw;
+        height: 2vw;
         border: solid black;
         border-radius: 15px;
-        border-width: 0.15vw 0.4vw 0.4vw 0.1vw;
+        border-width: 0.15vw 0.2vw 0.7vw 0.1vw;
         transform: rotate(45deg);
     }
 
     ${customMedia.lessThan('maxmobile')`
         &:before {
             top: 49%;
-            border-width: 0.15vw 0.5vw 0.5vw 0.2vw;
+            right: 15vw;
+            border-width: 0.15vw 0.2vw 1.5vw 0.2vw;
         }
         &:after {
-            top: 50.7%;
-            border-width: 0.15vw 0.5vw 0.5vw 0.2vw;
+            top: 50.8%;
+            right: 15vw;
+            border-width: 0.15vw 0.2vw 1.5vw 0.2vw;
         }
     `}
     ${customMedia.lessThan('408px')`
@@ -340,6 +386,9 @@ const Project_popup = styled.a`
     margin-bottom: 2vw;
     font-family: JejuGothic, NanumGothic;
     font-size: 1.5vw;
+    ${customMedia.lessThan('maxmobile')`
+        font-size: 2vw;
+    `}
 `
 
 class Project extends React.Component {
@@ -411,6 +460,12 @@ class Project extends React.Component {
                                 <Project_detail_title>{ p.project_detail_title }</Project_detail_title>
                                 <Project_img>
                                     <Img src = { p.project_img }/>
+                                    { p.key === 2 ?
+                                        <Project_img mobileImg style = {{ position: 'absolute', width: '30%', right: '-1vw'}}>
+                                            <Img src = { p.mobile_img }/>
+                                        </Project_img> 
+                                        : ""
+                                    }
                                 </Project_img>
 
                                 <Project_content>
@@ -481,6 +536,7 @@ const project_array =  [
       key: 2,
       project_detail_title: 'Portfolio',
       project_img: pf_project_img,
+      mobile_img: mobile,
       project_intriduction: `주제 : 리액트 기반 포트폴리오 사이트
                             인원 : 1명(본인)
                             배경 : "프로젝트 관리를 위한 정적인 네비게이션 사이트"
