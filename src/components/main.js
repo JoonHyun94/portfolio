@@ -49,7 +49,7 @@ const Maindisplay = styled.div`
 var Main_title_hello = styled.span`
   color: white;
   font-family: Noto Sans KR,sans-serif;
-  font-size: 2vw;
+  font-size: 1.5vw;
   filter: none;
   /* 글자 이미지 정가운데 배치 */
   position: absolute;
@@ -58,7 +58,7 @@ var Main_title_hello = styled.span`
   transform:translateX(-50%);
   ${customMedia.lessThan('maxmobile')`
     top: 46%;
-    font-size: 3vw;
+    font-size: 2.5vw;
   `}
 `
 
@@ -66,7 +66,7 @@ var Main_title_about = styled.span`
   color: white;
   white-space: pre;
   font-family: Noto Sans KR,sans-serif;
-  font-size: 2vw;
+  font-size: 1.5vw;
   filter: none;
   /* 글자 이미지 정가운데 배치 */
   position: absolute;
@@ -75,7 +75,7 @@ var Main_title_about = styled.span`
   transform:translateX(-50%);
   ${customMedia.lessThan('maxmobile')`
     top: 54%;
-    font-size: 3vw;
+    font-size: 2.5vw;
   `}
 `
 const Main_h1 = styled.h1`

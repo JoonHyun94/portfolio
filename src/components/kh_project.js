@@ -21,8 +21,8 @@ const opacityTransition = keyframes`
     to { opacity: 0.5; }
 `
 const widthTransition = keyframes`
-    from { width: 0%; height: 0%; }
-    to { width: 70%; height: 90%; }
+    from { width: 0%; }
+    to { width: 70%; }
 `
 const imgTransition = keyframes`
     from { width: 50%; }
@@ -151,7 +151,9 @@ const state = {
     imgPercent: null
 };
 
+// click 이벤트(이미지 확대)
 const expand = (tagId) => {
+    console.log(state.imgExpand);
     state.currentTag = document.querySelector("[id = " + tagId + "]");
     if(document.body.offsetWidth > 700) {
         state.imgPercent = 50;
@@ -165,12 +167,20 @@ const expand = (tagId) => {
         state.beforeTag = document.querySelector("[id = " + tagId + "]");
     }
     if(state.currentTag === state.beforeTag) {
-        if(state.imgExpand === true) {
+        if(state.imgExpand === true && state.currentTag.style.width != "80%") {
             state.currentTag.style.width = "80%";
             state.imgExpand = false;
             state.beforeTag = document.querySelector("[id = " + tagId + "]");
-        } else if(state.imgExpand === false) {
+        } else if(state.imgExpand === true && state.currentTag.style.width === "80%") {
             state.currentTag.style.width = state.imgPercent + "%";
+            state.imgExpand = false;
+            state.beforeTag = document.querySelector("[id = " + tagId + "]");
+        }else if(state.imgExpand === false && state.currentTag.style.width != state.imgPercent + "%") {
+            state.currentTag.style.width = state.imgPercent + "%";
+            state.imgExpand = true;
+            state.beforeTag = document.querySelector("[id = " + tagId + "]")
+        } else if(state.imgExpand === false && state.currentTag.style.width === state.imgPercent + "%") {
+            state.currentTag.style.width = "80%";
             state.imgExpand = true;
             state.beforeTag = document.querySelector("[id = " + tagId + "]")
         }
@@ -198,7 +208,6 @@ const Kh_project = ({ modalOpen, modalClose }) => {
             background-color: black;
             opacity: 0;
             animation: ${ opacityTransition } 0.3s forwards;
-            animation-iteration-count: 1;
         `
         Projectbody = styled.div`
             position: fixed;
@@ -207,14 +216,14 @@ const Kh_project = ({ modalOpen, modalClose }) => {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 0%;
-            height: 0%;
+            width: 70%;
+            height: 90%;
             border-radius: 10px;
             background-color: white;
             box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
-            animation: ${ widthTransition } 0.3s forwards;
-            animation-iteration-count: 1;
+            animation: ${ widthTransition } 0.3s;
         `
+
         state.count = 1;
     }
     

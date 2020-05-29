@@ -1,6 +1,7 @@
 import React from 'react';
 import profile from '../images/JoonHyun.jpg';
 import styled from 'styled-components';
+import { withStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { generateMedia } from 'styled-media-query';
 
@@ -77,6 +78,7 @@ const About = styled.div`
     flex-wrap: wrap;
     margin: 0 auto;
     margin-top: 6vw;
+    margin-bottom: 2vw;
     width: 70%;
     ${customMedia.lessThan('maxmobile')`
         display: flex;
@@ -125,7 +127,7 @@ const Profile_content = styled.div`
     text-align: justify;
     line-height: 1.5vw;
     font-family: JejuGothic, NanumGothic;
-    font-size: 0.9vw;
+    font-size: 0.8vw;
     top: 32%;
     white-space: pre-line;
     ${customMedia.lessThan('maxmobile')`
@@ -141,13 +143,17 @@ const Name = styled.h2`
     margin: 0;
     display: inline;
 `
+const Skill_div = styled.div`
+    width: 100%;
+    background-color: #E5F0F7;
+`
 const Skill = styled.div`
     display: flex;
     flex-direction: column;
     width: 60%;
     margin: 0 auto;
-    margin-bottom: 6vw;
-    padding-top: 6vw;
+    margin-bottom: 3vw;
+    padding-top: 3vw;
     ${customMedia.lessThan('maxmobile')`
         width: 70%;
     `}
@@ -155,6 +161,7 @@ const Skill = styled.div`
 const Skill_title = styled(Title)`
     margin: 0 auto;
     margin-bottom: 0.9vw;
+    border-bottom: 0.15vw solid #F5DA81;
     ${customMedia.lessThan('maxmobile')`
         margin: 0 auto;
         margin-bottom: 4vw;
@@ -197,7 +204,7 @@ const Skills_title = styled.div`
     margin-bottom: 2.5vw;
     width: fit-content;
     font-family: JejuGothic, NanumGothic;
-    font-size: 1.2vw;
+    font-size: 1vw;
     ${customMedia.lessThan('maxmobile')`
         font-size: 1.6vw;
     `}
@@ -206,15 +213,20 @@ const Skills_content = styled.div`
     position: absolute;
     margin: 0 auto;
     font-family: JejuGothic, NanumGothic;
-    font-size: 0.9vw;
+    font-size: 0.7vw;
     top: 70%;
     left: 50%;
     transform:translateX(-50%);
     ${customMedia.lessThan('maxmobile')`
-        top: 68%;
+        top: 69%;
         font-size: 1.2vw;
     `}
 `
+const styles = props => ({
+    colorPrimary: {
+      color: '#D6A586',
+    }
+});
 
 class Info_me extends React.Component {
     state = {
@@ -332,21 +344,23 @@ class Info_me extends React.Component {
                     </About>
                 </Me_body>
 
-                <Skill id = "Skill">
-                    <Skill_title>Skill</Skill_title>
-                    <Skill_body>
-                        { skills_array.map(s => {
-                            return <Skills key = { s.key }>
-                                <Skills_title>{ s.skills_title }</Skills_title>
-                                <Skills_content>{ Math.floor(s.skills_content) }%</Skills_content>
-                                <CircularProgress className = { classes } variant = "static" value = { s.skills_content } color = "secondary" size = { '7vw' }/>
-                            </Skills>
-                        })}
-                    </Skill_body>
-                </Skill>
+                <Skill_div>
+                    <Skill id = "Skill">
+                        <Skill_title>Skill</Skill_title>
+                        <Skill_body>
+                            { skills_array.map(s => {
+                                return <Skills key = { s.key }>
+                                    <Skills_title>{ s.skills_title }</Skills_title>
+                                    <Skills_content>{ Math.floor(s.skills_content) }%</Skills_content>
+                                    <CircularProgress className = { classes } classes = {{ colorPrimary: classes.colorPrimary }} variant = "static" value = { s.skills_content } size = { '7vw' }/>
+                                </Skills>
+                            })}
+                        </Skill_body>
+                    </Skill>
+                </Skill_div>
             </Me>
         )
     }
 }
 
-export default Info_me;
+export default withStyles(styles)(Info_me);
